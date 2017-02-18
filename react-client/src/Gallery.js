@@ -30,7 +30,7 @@ export default class Sample extends React.Component {
 
     spreadPhotos(){
         const PHOTO_SET = [];
-        for (var i=0; i<6; i++){
+        for (var i=0; i<9; i++){
             PHOTO_SET.push(this.photoTransfer());
         }
 
