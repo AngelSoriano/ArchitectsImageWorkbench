@@ -4,11 +4,8 @@ import './App.css';
 import NavigationBar from './NavigationBar'
 
 import SortDropdownButton from './SortDropdownButton'
-<<<<<<< HEAD:architects-image-workbench/src/App.js
 import RecommendedTags from './RecommendedTags'
-=======
 import FilterButton from './FilterButton'
->>>>>>> 321f237a8d8e306f1ed3f46d264da6443b70df78:react-client/src/App.js
 
 class App extends Component {
     render() {
