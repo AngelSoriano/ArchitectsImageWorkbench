@@ -12,13 +12,16 @@ class App extends Component {
         return (
             <div className="App">
                 <NavigationBar/>
-                <SearchBar/>
-                <FilterButton/>
-                <div className="App-header">
-                    <img src={logo} className="App-logo" alt="logo"/>
-                    <h2>Welcome to React</h2>
-                </div>
                 <SortDropdownButton/>
+                
+                <div className="App-header">
+                    {/*<img src={logo} className="App-logo" alt="logo"/>*/}
+                    {/*<h2>Welcome to React</h2>*/}
+                    <br/>
+                    <br/>
+                    <SearchBar/>
+                    <FilterButton/>
+                </div>
 		        <Gallery/>
                 <p className="App-intro">
                     To get started, edit <code>src/App.js</code> and save to reload.
