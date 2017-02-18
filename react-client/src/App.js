@@ -4,6 +4,7 @@ import NavigationBar from './NavigationBar'
 import SortDropdownButton from './SortDropdownButton'
 import Gallery from './Gallery'
 import FilterButton from './FilterButton'
+import UploadDropzone from './UploadDropzone'
 import PageNavigation from './PageNavigation'
 import SearchBar from './SearchBar'
 
@@ -28,6 +29,7 @@ class App extends Component {
                     <SortDropdownButton/>
                 </div>
                 <FilterButton/>
+
                 
 		        <Gallery/>
                 {/*<SortDropdownButton/>*/}
@@ -35,7 +37,11 @@ class App extends Component {
                 {/*<SortDropdownButton/>*/}
 		        <Gallery/>
                 {/*<SortDropdownButton/>*/}
-		        <Gallery/>
+
+                <UploadDropzone/>
+                {/*<PageNavigation/>*/}
+                {/*<SortDropdownButton/>*/}
+		        {/*<Gallery/>*/}
             </div>
 
         );

@@ -11,6 +11,7 @@
     "react": "^15.4.2",
     "react-bootstrap": "^0.30.7",
     "react-dom": "^15.4.2",
+    "react-dropzone": "^3.10.0",
     "react-grid-gallery": "^0.3.0",
     "react-image": "^0.1.0",
     "react-images": "^0.5.2",
