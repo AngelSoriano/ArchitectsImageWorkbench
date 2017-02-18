@@ -1,3 +1,6 @@
+/**
+ * Created by Scott Ligon on 2/17/17.
+ */
 import React from 'react';
 import Gallery from 'react-photo-gallery';
 
