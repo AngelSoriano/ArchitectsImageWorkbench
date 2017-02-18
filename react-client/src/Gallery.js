@@ -13,7 +13,6 @@ export default class Sample extends React.Component {
     }
 
     uploadPhoto(source, source_width, source_height, ratio){
-
         var PHOTO_SET =
             {
                 src: source,
@@ -24,7 +23,6 @@ export default class Sample extends React.Component {
                     src: source,
                 }
             }
-
         return PHOTO_SET;
     }
 
@@ -33,10 +31,8 @@ export default class Sample extends React.Component {
         for (var i=0; i<9; i++){
             PHOTO_SET.push(this.photoTransfer());
         }
-
         return PHOTO_SET;
     }
-
 
     render() {
         return (
