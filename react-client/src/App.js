@@ -17,8 +17,8 @@ class App extends Component {
                 <FilterButton/>
                 <UploadDropzone/>
                 <PageNavigation/>
-		        <Gallery/>
                 <SortDropdownButton/>
+		        <Gallery/>
             </div>
 
         );
