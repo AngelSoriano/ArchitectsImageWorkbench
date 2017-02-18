@@ -24,10 +24,11 @@
 }
 
 .SortDropdownButton{
-    position:absolute;
-    top:0;
-    right:0;
-    margin-top: 10px;
+    /*position:absolute;*/
+    /*top:70;*/
+    position:relative;
+    /*margin-top: 10px;*/
+    /*margin-bottom: 10px;*/
     margin-right: 2px;
 
 }
