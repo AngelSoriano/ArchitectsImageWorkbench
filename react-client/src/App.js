@@ -20,6 +20,8 @@ class App extends Component {
 		        <Gallery/>
                 <SortDropdownButton/>
 		        <Gallery/>
+                <SortDropdownButton/>
+		        <Gallery/>
             </div>
 
         );
