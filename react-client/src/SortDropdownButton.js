@@ -1,3 +1,6 @@
+/**
+ * Created by Scott Ligon on 2/14/17.
+ */
 import React, {Component} from 'react';
 import {SplitButton,MenuItem} from 'react-bootstrap';
 

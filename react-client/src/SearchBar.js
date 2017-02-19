@@ -1,5 +1,9 @@
+/**
+ * Created by Scott Ligon on 2/18/17.
+ */
 import React, {Component} from 'react';
-import {FormGroup,FormControl,ControlLabel,HelpBlock} from 'react-bootstrap';
+import {FormGroup,FormControl,ControlLabel,HelpBlock,Button} from 'react-bootstrap';
+import './App.css';
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -26,7 +30,9 @@ class SearchBar extends React.Component {
           
           <input type="text" value={this.state.value} onChange={this.handleChange} />
         </label>
-        <input type="submit" value="Search" />
+
+        <input type="submit" value="Search"/>
+       
       </form>
     );
   }

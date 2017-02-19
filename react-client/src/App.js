@@ -29,13 +29,12 @@ class App extends Component {
                     <SortDropdownButton/>
                 </div>
                 <FilterButton/>
-
                 
 		        <Gallery/>
                 {/*<SortDropdownButton/>*/}
-		        <Gallery/>
+		        {/*<Gallery/>*/}
                 {/*<SortDropdownButton/>*/}
-		        <Gallery/>
+		        {/*<Gallery/>*/}
                 {/*<SortDropdownButton/>*/}
 
                 <UploadDropzone/>
