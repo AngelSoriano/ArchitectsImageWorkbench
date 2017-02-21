@@ -4,6 +4,7 @@
 import React, {Component} from 'react';
 import {FormGroup,FormControl,ControlLabel,HelpBlock,Button} from 'react-bootstrap';
 import './App.css';
+import "./bootstrap.min.css";
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -31,7 +32,8 @@ class SearchBar extends React.Component {
           <input type="text" value={this.state.value} onChange={this.handleChange} />
         </label>
 
-        <input type="submit" value="Search"/>
+       <input type="submit" className="btn btn-default" value="Search"/>
+      
        
       </form>
     );
