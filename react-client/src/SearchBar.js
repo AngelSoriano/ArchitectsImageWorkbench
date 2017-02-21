@@ -4,7 +4,6 @@
 import React, {Component} from 'react';
 import {FormGroup,FormControl,ControlLabel,HelpBlock,Button} from 'react-bootstrap';
 import './App.css';
-import "./bootstrap.min.css";
 
 class SearchBar extends React.Component {
   constructor(props) {

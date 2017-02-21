@@ -9,7 +9,7 @@ class FilterButton extends Component {
     render() {
         return (
             <div className="FilterButton">
-                <Button onClick={ this.showFilterMenu }>Filter</Button>
+                <Button bsStyle="warning" onClick={ this.showFilterMenu }>Filter</Button>
                 <Collapse in={ this.state.open }>
                     <div>
                         <Well>
