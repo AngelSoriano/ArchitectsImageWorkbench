@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import NavigationBar from './NavigationBar'
-
+import TopSearch from './topSearch'
 import SortDropdownButton from './SortDropdownButton'
 import RecommendedTags from './RecommendedTags'
 import FilterButton from './FilterButton'
@@ -23,6 +23,7 @@ class App extends Component {
                     To get started, edit <code>src/App.js</code> and save to reload.
                 </p>
                 <RecommendedTags/>
+                <TopSearch/>
             </div>
         );
     }
