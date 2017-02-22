@@ -3,6 +3,7 @@
  */
 var React = require('react');
 import { FormGroup, FormControl} from 'react-bootstrap';
+import './App.css';
 
 var TopSearch = React.createClass({
     getInitialState: function () {
@@ -20,7 +21,7 @@ var TopSearch = React.createClass({
     render: function () {
        return(
            <form>
-               <FormGroup
+               <FormGroup className="topQuery"
                controlID="search"
                validationState={this.getValidationState()}>
                    <FormControl type="text" value={this.state.value}

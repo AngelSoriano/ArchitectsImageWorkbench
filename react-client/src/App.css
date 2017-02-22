@@ -115,3 +115,7 @@ input[type="text"]{
   padding-right: 30px; 
   width: 600px;
 }
+
+.topQuery{
+  width: 600px;
+}
