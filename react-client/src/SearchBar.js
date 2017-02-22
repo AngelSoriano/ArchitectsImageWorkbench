@@ -28,12 +28,16 @@ class SearchBar extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <label>
           
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
         </label>
 
-        <input type="submit" value="Search"/>
+       {/*<input type="submit" class="btn btn-default" value="Search"/>*/}
+        <div className="inner-addon right-addon">
+            <i className="glyphicon glyphicon-search"></i>
+            <input type="text" className="form-control" value={this.state.value} onChange={this.handleChange} />
+        </div>
        
       </form>
+      
     );
   }
 }
