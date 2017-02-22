@@ -7,13 +7,15 @@ import FilterButton from './FilterButton'
 import UploadDropzone from './UploadDropzone'
 import PageNavigation from './PageNavigation'
 import SearchBar from './SearchBar'
+import UserIcon from './UserIcon'
 
 class App extends Component {
     render() {
         return (
             <div className="App">
-                <NavigationBar/>
-                
+                <div className = "Navi-Bar">
+                    <NavigationBar/>
+                </div>
                 <div className="App-header">
                     {/*<img src={logo} className="App-logo" alt="logo"/>*/}
                     {/*<h2>Welcome to React</h2>*/}
