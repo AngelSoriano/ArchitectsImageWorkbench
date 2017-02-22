@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import './App.css';
 import NavigationBar from './NavigationBar'
+import TopSearch from './topSearch'
 import SortDropdownButton from './SortDropdownButton'
+import RecommendedTags from './RecommendedTags'
 import Gallery from './Gallery'
 import FilterButton from './FilterButton'
 import UploadDropzone from './UploadDropzone'
@@ -27,6 +29,11 @@ class App extends Component {
                 <div className = "Sorting">
                     <PageNavigation/>
                 </div>
+                <p className="App-intro">
+                    To get started, edit <code>src/App.js</code> and save to reload.
+                </p>
+                <RecommendedTags/>
+                <TopSearch/>
                  <div className = "Sorting">
                     <SortDropdownButton/>
                 </div>
