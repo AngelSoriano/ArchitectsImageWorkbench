@@ -119,3 +119,9 @@ input[type="text"]{
 .topQuery{
   width: 200px;
 }
+
+.tagsBar{
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
