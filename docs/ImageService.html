@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>ImageService.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>ImageService.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/**
+ * This class performs image-related services
+ *
+ * Created by naelin on 2/18/17.
+ *
+ */</span>
+
+<span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> firebase <span class="hljs-keyword">from</span> <span class="hljs-string">"firebase"</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">'../client'</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>Allow UUID generation</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">const</span> uuidV4 = <span class="hljs-built_in">require</span>(<span class="hljs-string">'uuid/v4'</span>);
+
+<span class="hljs-comment">/**
+ *  Uploads the image file to storage
+ *
+ *  @param String $file
+ *      The file path for the image we want to store
+ *
+ *  @todo
+ *      1. Better error-handling
+ *
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">upload</span>(<span class="hljs-params">file</span>) </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Root reference to Firebase Storage instance (where images will be saved)</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> storageRef = firebase.storage().ref();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Generate unique id for image</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">const</span> uniqueId = uuidV4()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Create a new reference for where newly uploaded image will be stored in Firebase Storage</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> imageRef = storageRef.child(<span class="hljs-string">"images/"</span> + uniqueId);
+
+    <span class="hljs-built_in">console</span>.log(file)
+    <span class="hljs-keyword">if</span> (!file) {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'error'</span>)
+    }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Store image into Firebase Storage</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    imageRef.put(file).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">snapshot</span>) </span>{
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Uploaded an image!'</span>);
+    });
+
+}
+
+<span class="hljs-comment">/**
+ *  Retrieves the image URL according to the given image ID
+ *
+ *  @param String $imageId
+ *      The ID of the image URL we want to retrieve from storage
+ *
+ *  @todo
+ *      1. Better error-handling
+ *
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">retrieve</span>(<span class="hljs-params">imageId</span>) </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Create a reference to Firebase Storage</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> storageRef = firebase.storage().ref();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>Create a reference to the file we want to download</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> imageRef = storageRef.child(<span class="hljs-string">'images/'</span> + imageId);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>Get the URL for the image we are retrieving</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    imageRef.getDownloadURL().then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">url</span>) </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>Once we have the download URL, then assign it to imageUrl</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="hljs-keyword">const</span> imageUrl = url;
+        <span class="hljs-built_in">console</span>.log(imageUrl.toString());
+        <span class="hljs-keyword">return</span> imageUrl.toString();
+
+
+    }).catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>) </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>If anything goes wrong while getting the download URL, log the error</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="hljs-built_in">console</span>.error(error);
+    });
+}
+
+
+<span class="hljs-keyword">const</span> ImageService = {upload, retrieve};
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> ImageService;</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>
