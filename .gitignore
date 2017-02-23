@@ -59,7 +59,7 @@ typings/
 
 # misc
 .DS_Store
-.idea/
+.idea
 service-account-key.json
 
 Contact GitHub API Training Shop Blog About
