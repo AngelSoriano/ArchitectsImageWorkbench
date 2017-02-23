@@ -125,3 +125,15 @@ input[type="text"]{
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+/*#FormControl{*/
+  /*-webkit-border-radius: 4px;*/
+  /*-moz-border-radius: 4px;*/
+  /*border-radius: 4px;*/
+  /*-webkit-border-top: 4px;*/
+  /*-moz-border-top: 4px;*/
+  /*border-top: 4px;*/
+  /*-webkit-border-bottom: 4px;*/
+  /*-moz-border-bottom: 4px;*/
+  /*border-bottom: 4px;*/
+/*}*/

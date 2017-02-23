@@ -29,14 +29,15 @@ class App extends Component {
                 <div className = "Sorting">
                     <PageNavigation/>
                 </div>
+                <div className = "Sorting">
+                    <SortDropdownButton/>
+                </div>
                 <p className="App-intro">
                     {/*To get started, edit <code>src/App.js</code> and save to reload.*/}
                 </p>
                 <RecommendedTags/>
                 <TopSearch/>
-                 <div className = "Sorting">
-                    <SortDropdownButton/>
-                </div>
+
                 <FilterButton/>
                 
 		        <Gallery/>
