@@ -6,10 +6,9 @@ import SortDropdownButton from './SortDropdownButton'
 import RecommendedTags from './RecommendedTags'
 import Gallery from './Gallery'
 import UploadComponent from './UploadComponent'
-import UploadDropzone from './UploadDropzone'
 import PageNavigation from './PageNavigation'
 import SearchBar from './SearchBar'
-import UserIcon from './UserIcon'
+
 
 class App extends Component {
     render() {

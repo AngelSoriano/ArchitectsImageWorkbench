@@ -75,6 +75,8 @@ class UploadModal extends Component {
             console.log('No image selected error')
         } else
             this.handleImageUpload(this.state.uploadedImage)
+            console.log('Image uploaded')
+            this.closeUploadModal()
     }
 
 }

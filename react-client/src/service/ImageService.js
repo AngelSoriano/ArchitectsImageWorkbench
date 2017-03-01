@@ -37,7 +37,7 @@ function upload(file) {
 
     // Store image into Firebase Storage
     imageRef.put(file).then(function (snapshot) {
-        console.log('Uploaded an image!');
+        console.log('Uploaded an image!')
     });
 
 }
@@ -71,6 +71,8 @@ function retrieve(imageId) {
         console.error(error);
     });
 }
+
+
 
 
 const ImageService = {upload, retrieve};
