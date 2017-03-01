@@ -5,7 +5,7 @@ import TopSearch from './topSearch'
 import SortDropdownButton from './SortDropdownButton'
 import RecommendedTags from './RecommendedTags'
 import Gallery from './Gallery'
-import FilterButton from './FilterButton'
+import UploadComponent from './UploadComponent'
 import UploadDropzone from './UploadDropzone'
 import PageNavigation from './PageNavigation'
 import SearchBar from './SearchBar'
@@ -19,11 +19,10 @@ class App extends Component {
                     <NavigationBar/>
                 </div>
                 <div className="App-header">
-                    {/*<img src={logo} className="App-logo" alt="logo"/>*/}
-                    {/*<h2>Welcome to React</h2>*/}
                     <br/>
                     <br/>
                     <SearchBar/>
+                    <br/>
                 </div>
 
                 <div className = "Sorting">
@@ -37,16 +36,14 @@ class App extends Component {
                  <div className = "Sorting">
                     <SortDropdownButton/>
                 </div>
-                <FilterButton/>
-                
-		        <Gallery/>
+                <UploadComponent/>
+                <Gallery/>
                 {/*<SortDropdownButton/>*/}
 		        {/*<Gallery/>*/}
                 {/*<SortDropdownButton/>*/}
 		        {/*<Gallery/>*/}
                 {/*<SortDropdownButton/>*/}
 
-                <UploadDropzone/>
                 {/*<PageNavigation/>*/}
                 {/*<SortDropdownButton/>*/}
 		        {/*<Gallery/>*/}
@@ -54,6 +51,8 @@ class App extends Component {
 
         );
     }
+
+
 }
 
 export default App;

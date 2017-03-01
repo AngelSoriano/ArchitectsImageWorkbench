@@ -3,13 +3,14 @@
  */
 import React, {Component} from 'react';
 import Dropzone from 'react-dropzone';
-import ImageService from './service/ImageService'
+import {Image, Grid, Row, Col} from 'react-bootstrap';
 
 class UploadDropzone extends Component {
 
     render() {
         return (
             <div className="UploadDropzone">
+
                 <Dropzone
                     multiple={false}
                     accept="image/*"
@@ -18,12 +19,15 @@ class UploadDropzone extends Component {
                 </Dropzone>
 
                 <div>
-                    {this.state.uploadedImageReference === '' ? null :
-                        <div>
-                            <p>{this.state.uploadedImage.name}</p>
-                            <img src={this.state.uploadedImageReference}/>
-                        </div>}
+                    {
+                        this.state.uploadedImage === null ? null :
+                            <div>
+                                <p>{this.state.uploadedImage.name}</p>
+                                <Image src={this.getImagePreview()} responsive/>
+                            </div>
+                    }
                 </div>
+
             </div>
 
         )
@@ -31,25 +35,25 @@ class UploadDropzone extends Component {
 
     constructor(props) {
         super(props);
-        this.onImageDrop = this.onImageDrop.bind(this)
+
         this.state = {
-            uploadedImage: null,
-            uploadedImageReference: ''
+            uploadedImage: null
         };
 
+        this.onImageDrop = this.onImageDrop.bind(this)
     }
 
     onImageDrop(files) {
-        this.setState({
-            uploadedImage: files[0]
+        this.setState({uploadedImage: files[0]}, function() {
+            this.props.onImageDrop(this.state.uploadedImage)
         });
 
-        this.handleImageUpload(files[0]);
     }
 
-    handleImageUpload(file) {
-        ImageService.upload(file)
+    getImagePreview() {
+        return this.state.uploadedImage.preview
     }
+
 }
 
 export default UploadDropzone
