@@ -18,6 +18,7 @@ class App extends Component {
                 <div className = "Navi-Bar">
                     <NavigationBar/>
                 </div>
+
                 <div className="App-header">
                     <br/>
                     <br/>
@@ -28,25 +29,15 @@ class App extends Component {
                 <div className = "Sorting">
                     <PageNavigation/>
                 </div>
-                <p className="App-intro">
-                    {/*To get started, edit <code>src/App.js</code> and save to reload.*/}
-                </p>
-                <RecommendedTags/>
-                <TopSearch/>
-                 <div className = "Sorting">
+                <div className = "Sorting">
                     <SortDropdownButton/>
                 </div>
+                <RecommendedTags/>
+                <TopSearch/>
+
                 <UploadComponent/>
                 <Gallery/>
-                {/*<SortDropdownButton/>*/}
-		        {/*<Gallery/>*/}
-                {/*<SortDropdownButton/>*/}
-		        {/*<Gallery/>*/}
-                {/*<SortDropdownButton/>*/}
 
-                {/*<PageNavigation/>*/}
-                {/*<SortDropdownButton/>*/}
-		        {/*<Gallery/>*/}
             </div>
 
         );

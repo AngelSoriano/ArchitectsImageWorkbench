@@ -20,11 +20,11 @@ var TopSearch = React.createClass({
     },
     render: function () {
        return(
-           <form>
-               <FormGroup className="topQuery"
+           <form className="topQuery">
+               <FormGroup
                controlID="search"
                validationState={this.getValidationState()}>
-                   <FormControl type="text" value={this.state.value}
+                   <FormControl className="topTextBox" type="text" value={this.state.value}
                             placeholder="Search" onChange={this.handleChange}/>
                </FormGroup>
            </form>

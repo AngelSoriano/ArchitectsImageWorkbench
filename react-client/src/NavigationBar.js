@@ -2,7 +2,7 @@
  * Created by naelin on 2/13/17.
  */
 
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { Navbar, Nav, NavItem, MenuItem, NavDropdown } from 'react-bootstrap';
 import UserIcon from './UserIcon';
 import './App.css';
