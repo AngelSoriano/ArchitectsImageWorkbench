@@ -14,7 +14,7 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <div className = "Navi-Bar">
+                <div className="Navi-Bar">
                     <NavigationBar/>
                 </div>
 
@@ -25,10 +25,10 @@ class App extends Component {
                     <br/>
                 </div>
 
-                <div className = "Sorting">
+                <div className="Sorting">
                     <PageNavigation/>
                 </div>
-                <div className = "Sorting">
+                <div className="Sorting">
                     <SortDropdownButton/>
                 </div>
                 <RecommendedTags/>

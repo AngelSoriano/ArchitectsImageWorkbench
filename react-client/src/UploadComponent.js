@@ -12,21 +12,25 @@ class UploadComponent extends Component {
             <div className="UploadComponent">
                 <Button bsStyle="warning" onClick={this.showUploadModal}>Upload</Button>
 
-                {this.state.showModal ? <UploadModal/> : null}
+                {this.state.showModal ? <UploadModal closeUploadModal={this.closeUploadModal}/> : null}
             </div>
         )
     }
 
     constructor(props) {
         super(props);
-
         this.state = {showModal: false}
-
         this.showUploadModal = this.showUploadModal.bind(this)
+        this.closeUploadModal = this.closeUploadModal.bind(this)
+
     }
 
     showUploadModal() {
-        this.setState({showModal: true});
+        this.setState({showModal: true})
+    }
+
+    closeUploadModal() {
+        this.setState({showModal: false})
     }
 
 }
