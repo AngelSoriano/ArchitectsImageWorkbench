@@ -19,10 +19,12 @@ class App extends Component {
                 </div>
 
                 <div className="App-header">
-                    <br/>
-                    <br/>
-                    <SearchBar/>
-                    <br/>
+                    <div className="Intro-Message">
+                        <h1>Gain insight for your next creative design</h1>
+                    </div>
+                    <div className="SearchBar">
+                        <SearchBar/>
+                    </div>
                 </div>
 
                 <div className="Sorting">
