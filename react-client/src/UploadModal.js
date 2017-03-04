@@ -42,13 +42,14 @@ class UploadModal extends Component {
         this.state = {
             showModal: true,
             uploadedImage: null,
-            inputValidationState: ''
+            inputValidationState: '',
         }
 
         this.onImageDrop = this.onImageDrop.bind(this)
         this.closeUploadModal = this.closeUploadModal.bind(this)
         this.setValidationState = this.setValidationState.bind(this)
         this.upload = this.upload.bind(this)
+        this.handleImageUpload = this.handleImageUpload.bind(this)
     }
 
     onImageDrop(file) {
@@ -56,11 +57,13 @@ class UploadModal extends Component {
     }
 
     handleImageUpload(file) {
-        ImageService.upload(file)
+        ImageService.upload(file, (imageKeyName) => {
+            console.log(imageKeyName)
+        });
     }
 
     closeUploadModal() {
-        this.setState({showModal: false}, function() {
+        this.setState({showModal: false}, function () {
             this.props.closeUploadModal(this.state.showModal)
         })
     }

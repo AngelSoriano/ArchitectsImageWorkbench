@@ -17,13 +17,18 @@ import request from 'superagent';
  *
  *
  */
-function upload(file) {
-    request.post('images/upload')
+function upload(file, callback) {
+    return request.post('images/upload')
         .attach('imageFile', file)
+        .set('Accept', 'application/json')
         .end((err, res) => {
             if (err) console.log(err);
-            else alert('File uploaded!');
+            else {
+                alert('File uploaded!');
+                callback(JSON.stringify(res.text))
+            }
         })
+
 }
 
 /**
@@ -43,20 +48,18 @@ function retrieve(imageId) {
     var imageRef = storageRef.child('images/' + imageId);
 
     // Get the URL for the image we are retrieving
-    imageRef.getDownloadURL().then(function(url) {
+    imageRef.getDownloadURL().then(function (url) {
         // Once we have the download URL, then assign it to imageUrl
         const imageUrl = url;
         console.log(imageUrl.toString());
         return imageUrl.toString();
 
 
-    }).catch(function(error) {
+    }).catch(function (error) {
         // If anything goes wrong while getting the download URL, log the error
         console.error(error);
     });
 }
-
-
 
 
 const ImageService = {upload, retrieve};

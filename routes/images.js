@@ -35,9 +35,10 @@ const upload = multer({
  *
  */
 router.post('/upload', upload.single('imageFile'), (req, res) => {
+    var name = uuid.v4() + ".jpg"
     s3.putObject({
         Bucket: 'aiw-bucket',
-        Key: uuid.v4() + ".jpg", // Generate unique key for each image
+        Key: name, // Generate unique key for each image
         Body: req.file.buffer,
         ACL: 'public-read',
     }, (err) => {
@@ -45,7 +46,7 @@ router.post('/upload', upload.single('imageFile'), (req, res) => {
             console.log(err)
             return res.status(400).send(err);
         }
-        res.send('File uploaded to S3');
+        res.send(name);
     })
 
 })
