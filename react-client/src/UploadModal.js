@@ -7,6 +7,7 @@ import {Button, Modal} from 'react-bootstrap'
 import UploadDropzone from './UploadDropzone'
 import UploadDetailsForm from './UploadDetailsForm'
 import ImageService from './service/ImageService'
+import DetectLabelsService from './service/DetectLabelsService'
 
 class UploadModal extends Component {
     render() {
@@ -53,7 +54,9 @@ class UploadModal extends Component {
     }
 
     onImageDrop(file) {
-        this.setState({uploadedImage: file});
+        this.setState({uploadedImage: file}, function() {
+            DetectLabelsService.detectLabels(file)
+        });
     }
 
     handleImageUpload(file) {

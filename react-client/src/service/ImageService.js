@@ -72,6 +72,5 @@ function retrieve(imageId) {
     });
 }
 
-
 const ImageService = {upload, retrieve};
 export default ImageService;

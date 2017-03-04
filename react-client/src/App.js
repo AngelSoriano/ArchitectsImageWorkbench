@@ -10,7 +10,8 @@ import UploadDropzone from './UploadDropzone'
 import PageNavigation from './PageNavigation'
 import SearchBar from './SearchBar'
 import UserIcon from './UserIcon'
-
+import DetectLabelsService from './service/DetectLabelsService'
+import {Button} from 'react-bootstrap'
 class App extends Component {
     render() {
         return (
@@ -18,7 +19,7 @@ class App extends Component {
                 <div className = "Navi-Bar">
                     <NavigationBar/>
                 </div>
-
+                <Button onClick={DetectLabelsService.detectLabels}></Button>
                 <div className="App-header">
                     <br/>
                     <br/>
