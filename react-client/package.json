@@ -17,7 +17,8 @@
     "react-image": "^0.1.0",
     "react-images": "^0.5.2",
     "react-photo-gallery": "^4.2.16",
-    "react-router": "^3.0.2"
+    "react-router": "^3.0.2",
+    "superagent": "^3.5.0"
   },
   "scripts": {
     "start": "react-scripts start",
