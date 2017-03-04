@@ -25,7 +25,7 @@ function upload(file, callback) {
             if (err) console.log(err);
             else {
                 alert('File uploaded!');
-                callback(JSON.stringify(res.text))
+                callback(res.text)
             }
         })
 

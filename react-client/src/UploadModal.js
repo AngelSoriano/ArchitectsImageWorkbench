@@ -59,6 +59,7 @@ class UploadModal extends Component {
     handleImageUpload(file) {
         ImageService.upload(file, (imageKeyName) => {
             console.log(imageKeyName)
+            ImageService.detectLabels(imageKeyName)
         });
     }
 
