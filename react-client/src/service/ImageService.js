@@ -61,6 +61,16 @@ function retrieve(imageId) {
     });
 }
 
+function detectLabels(imageKey) {
+    console.log(imageKey);
+    request
+        .get('images/detect')
+        .query({imageKey: imageKey})
+        .end(function(err, res){
+        console.log(res);
+    })
+}
 
-const ImageService = {upload, retrieve};
+
+const ImageService = {upload, retrieve, detectLabels};
 export default ImageService;

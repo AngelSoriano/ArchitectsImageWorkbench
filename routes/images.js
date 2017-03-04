@@ -13,8 +13,10 @@ AWS.config.update(
     {
         accessKeyId: process.env.AWS_ACCESS_KEY_ID,
         secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-        subregion: 'us-west-2',
+        region: 'us-west-2',
     });
+const rekognition = new AWS.Rekognition();
+
 
 /**
  * Multer config
@@ -23,7 +25,7 @@ AWS.config.update(
 const upload = multer({
     storage: multer.memoryStorage(),
     // File size limitation in bytes
-    limits: { fileSize: 52428800 },
+    limits: {fileSize: 52428800},
 });
 
 /**
@@ -49,6 +51,33 @@ router.post('/upload', upload.single('imageFile'), (req, res) => {
         res.send(name);
     })
 
-})
+});
+
+/**
+ *  /images/detect
+ *  Detects labels from photo from Amazon S3 bucket
+ *
+ */
+router.get('/detect', (req, res, next) => {
+
+    console.log(req.query.imageKey)
+    var params = {
+        Image: {
+            S3Object: {
+                Bucket: "aiw-bucket",
+                Name: req.query.imageKey
+            }
+        },
+        MaxLabels: 300,
+        MinConfidence: 0
+    };
+
+    rekognition.detectLabels(params, function (err, data) {
+        if (err) {
+            console.log(err, err.stack);
+        }
+        else console.log(data);
+    });
+});
 
 module.exports = router;

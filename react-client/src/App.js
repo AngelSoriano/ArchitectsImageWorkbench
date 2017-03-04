@@ -8,8 +8,6 @@ import Gallery from './Gallery'
 import UploadComponent from './UploadComponent'
 import PageNavigation from './PageNavigation'
 import SearchBar from './SearchBar'
-
-
 class App extends Component {
     render() {
         return (
@@ -17,7 +15,6 @@ class App extends Component {
                 <div className="Navi-Bar">
                     <NavigationBar/>
                 </div>
-
                 <div className="App-header">
                     <div className="Intro-Message">
                         <h1>Gain insight for your next creative design</h1>
