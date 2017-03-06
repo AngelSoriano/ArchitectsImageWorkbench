@@ -13,7 +13,7 @@ class UploadModal extends Component {
         return (
             <div className="UploadModal">
 
-                <Modal show={ this.state.showModal } onHide={ this.closeUploadModal }>
+                <Modal show={this.state.showModal} onHide={this.closeUploadModal}>
                     <Modal.Header closeButton>
                         <Modal.Title>Upload an image</Modal.Title>
                     </Modal.Header>
@@ -21,9 +21,8 @@ class UploadModal extends Component {
                     <Modal.Body>
                         {/*Drag and drop image upload component*/}
                         <UploadDropzone onImageDrop={this.onImageDrop }/>
-
+                        {/*The upload input form*/}
                         <UploadDetailsForm setValidationState={this.setValidationState}/>
-
                     </Modal.Body>
 
                     <Modal.Footer>
@@ -43,13 +42,14 @@ class UploadModal extends Component {
         this.state = {
             showModal: true,
             uploadedImage: null,
-            inputValidationState: ''
+            inputValidationState: '',
         }
 
         this.onImageDrop = this.onImageDrop.bind(this)
         this.closeUploadModal = this.closeUploadModal.bind(this)
         this.setValidationState = this.setValidationState.bind(this)
         this.upload = this.upload.bind(this)
+        this.handleImageUpload = this.handleImageUpload.bind(this)
     }
 
     onImageDrop(file) {
@@ -57,11 +57,16 @@ class UploadModal extends Component {
     }
 
     handleImageUpload(file) {
-        ImageService.upload(file)
+        ImageService.upload(file, (imageKeyName) => {
+            console.log(imageKeyName)
+            ImageService.detectLabels(imageKeyName)
+        });
     }
 
     closeUploadModal() {
-        this.setState({showModal: false})
+        this.setState({showModal: false}, function () {
+            this.props.closeUploadModal(this.state.showModal)
+        })
     }
 
     setValidationState(status) {
@@ -75,6 +80,7 @@ class UploadModal extends Component {
             console.log('No image selected error')
         } else
             this.handleImageUpload(this.state.uploadedImage)
+        this.closeUploadModal()
     }
 
 }

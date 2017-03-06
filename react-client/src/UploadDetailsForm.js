@@ -13,13 +13,13 @@ class UploadDetailsForm extends Component {
                 <form>
                     <FormGroup
                         controlId="formBasicText"
-                        validationState={ this.getValidationState() }>
+                        validationState={this.getValidationState()}>
                         <ControlLabel>Title</ControlLabel>
                         <FormControl
                             type="text"
-                            value={ this.state.inputValue }
+                            value={this.state.inputValue}
                             placeholder="(Title)"
-                            onChange={ this.handleChange }
+                            onChange={this.handleChange}
                         />
                         <FormControl.Feedback />
                     </FormGroup>
@@ -51,10 +51,9 @@ class UploadDetailsForm extends Component {
     }
 
     handleChange(e) {
-        this.setState({ inputValue: e.target.value}, function() {
+        this.setState({inputValue: e.target.value}, function () {
             this.props.setValidationState(this.getValidationState())
         });
-
     }
 
 }

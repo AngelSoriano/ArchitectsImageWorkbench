@@ -6,44 +6,39 @@ import SortDropdownButton from './SortDropdownButton'
 import RecommendedTags from './RecommendedTags'
 import Gallery from './Gallery'
 import UploadComponent from './UploadComponent'
-import UploadDropzone from './UploadDropzone'
 import PageNavigation from './PageNavigation'
 import SearchBar from './SearchBar'
-import UserIcon from './UserIcon'
-
 class App extends Component {
     render() {
         return (
             <div className="App">
-                <div className = "Navi-Bar">
+                <div className="Navi-Bar">
                     <NavigationBar/>
                 </div>
-
                 <div className="App-header">
-                    <br/>
-                    <br/>
-                    <SearchBar/>
-                    <br/>
+                    <div className="Intro-Message">
+                        <h1>Gain insight for your next creative design</h1>
+                    </div>
+                    <div className="SearchBar">
+                        <SearchBar/>
+                    </div>
                 </div>
 
-                <div className = "Sorting">
+                <div className="Sorting">
                     <PageNavigation/>
                 </div>
-                <div className = "Sorting">
+                <div className="Sorting">
                     <SortDropdownButton/>
                 </div>
                 <RecommendedTags/>
-                <TopSearch/>
-
-                <UploadComponent/>
-                <Gallery/>
+               
 
             </div>
 
-        );
+    );
     }
 
 
-}
+    }
 
-export default App;
+    export default App;
