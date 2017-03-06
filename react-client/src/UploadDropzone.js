@@ -3,13 +3,14 @@
  */
 import React, {Component} from 'react';
 import Dropzone from 'react-dropzone';
-import ImageService from './service/ImageService'
+import {Image} from 'react-bootstrap';
 
 class UploadDropzone extends Component {
 
     render() {
         return (
             <div className="UploadDropzone">
+
                 <Dropzone
                     multiple={false}
                     accept="image/*"
@@ -17,13 +18,20 @@ class UploadDropzone extends Component {
                     <p>Drop an image or click to select a file to upload.</p>
                 </Dropzone>
 
+                {/*<input className="fileInput"*/}
+                {/*type="file"*/}
+                {/*onChange={(e) => this.handleChange(e)}/>*/}
+
                 <div>
-                    {this.state.uploadedImageReference === '' ? null :
-                        <div>
-                            <p>{this.state.uploadedImage.name}</p>
-                            <img src={this.state.uploadedImageReference}/>
-                        </div>}
+                    {
+                        this.state.uploadedImage === null ? null :
+                            <div>
+                                <p>{this.state.uploadedImage.name}</p>
+                                <Image src={this.getImagePreview()} responsive/>
+                            </div>
+                    }
                 </div>
+
             </div>
 
         )
@@ -31,25 +39,45 @@ class UploadDropzone extends Component {
 
     constructor(props) {
         super(props);
-        this.onImageDrop = this.onImageDrop.bind(this)
+
         this.state = {
             uploadedImage: null,
-            uploadedImageReference: ''
+            file: ''
         };
+
+        this.onImageDrop = this.onImageDrop.bind(this)
+        this.handleChange = this.handleChange.bind(this)
 
     }
 
     onImageDrop(files) {
-        this.setState({
-            uploadedImage: files[0]
+        this.setState({uploadedImage: files[0]}, function () {
+            this.props.onImageDrop(this.state.uploadedImage)
+            console.log(this.state.uploadedImage)
         });
 
-        this.handleImageUpload(files[0]);
     }
 
-    handleImageUpload(file) {
-        ImageService.upload(file)
+    getImagePreview() {
+        return this.state.uploadedImage.preview
     }
+
+    handleChange(e) {
+        e.preventDefault();
+
+        let reader = new FileReader();
+        let file = e.target.files[0];
+
+        reader.onloadend = () => {
+            this.setState({uploadedImage: file}, function () {
+                this.props.onImageDrop(this.state.uploadedImage)
+            });
+        }
+
+        reader.readAsDataURL(file)
+        console.log(file)
+    }
+
 }
 
 export default UploadDropzone

@@ -20,7 +20,7 @@ class NavigationBar extends Component {
                     <Nav>
                         <NavItem eventKey={1} href="#">Link</NavItem>
                         <NavItem eventKey={2} href="#">Link</NavItem>
-                        <NavDropdown className = "userMenu" eventKey={3} title = {<UserIcon/>} id="basic-nav-dropdown" pullRight id="split-button-pull-right">
+                        <NavDropdown className="userMenu" eventKey={3} title={<UserIcon/>} id="basic-nav-dropdown" pullRight>
                             <MenuItem eventKey={3.1}>Action</MenuItem>
                             <MenuItem eventKey={3.2}>Another action</MenuItem>
                             <MenuItem eventKey={3.3}>Something else here</MenuItem>

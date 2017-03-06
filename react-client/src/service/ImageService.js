@@ -7,38 +7,27 @@
 
 import * as firebase from "firebase";
 import '../client'
-// Allow UUID generation
-const uuidV4 = require('uuid/v4');
+import request from 'superagent';
 
 /**
- *  Uploads the image file to storage
+ *  Pings server for images/upload endpoint
  *
- *  @param String $file
- *      The file path for the image we want to store
+ *  @param Object $file
+ *      The file for the image we want to store
  *
- *  @todo
- *      1. Better error-handling
  *
  */
-function upload(file) {
-    // Root reference to Firebase Storage instance (where images will be saved)
-    var storageRef = firebase.storage().ref();
-
-    // Generate unique id for image
-    const uniqueId = uuidV4()
-
-    // Create a new reference for where newly uploaded image will be stored in Firebase Storage
-    var imageRef = storageRef.child("images/" + uniqueId);
-
-    console.log(file)
-    if (!file) {
-        console.log('error')
-    }
-
-    // Store image into Firebase Storage
-    imageRef.put(file).then(function (snapshot) {
-        console.log('Uploaded an image!');
-    });
+function upload(file, callback) {
+    return request.post('images/upload')
+        .attach('imageFile', file)
+        .set('Accept', 'application/json')
+        .end((err, res) => {
+            if (err) console.log(err);
+            else {
+                alert('File uploaded!');
+                callback(res.text)
+            }
+        })
 
 }
 
@@ -59,19 +48,29 @@ function retrieve(imageId) {
     var imageRef = storageRef.child('images/' + imageId);
 
     // Get the URL for the image we are retrieving
-    imageRef.getDownloadURL().then(function(url) {
+    imageRef.getDownloadURL().then(function (url) {
         // Once we have the download URL, then assign it to imageUrl
         const imageUrl = url;
         console.log(imageUrl.toString());
         return imageUrl.toString();
 
 
-    }).catch(function(error) {
+    }).catch(function (error) {
         // If anything goes wrong while getting the download URL, log the error
         console.error(error);
     });
 }
 
+function detectLabels(imageKey) {
+    console.log(imageKey);
+    request
+        .get('images/detect')
+        .query({imageKey: imageKey})
+        .end(function(err, res){
+        console.log(res);
+    })
+}
 
-const ImageService = {upload, retrieve};
+
+const ImageService = {upload, retrieve, detectLabels};
 export default ImageService;

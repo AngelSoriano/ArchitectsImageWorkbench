@@ -5,56 +5,40 @@ import TopSearch from './topSearch'
 import SortDropdownButton from './SortDropdownButton'
 import RecommendedTags from './RecommendedTags'
 import Gallery from './Gallery'
-import FilterButton from './FilterButton'
-import UploadDropzone from './UploadDropzone'
+import UploadComponent from './UploadComponent'
 import PageNavigation from './PageNavigation'
 import SearchBar from './SearchBar'
-import UserIcon from './UserIcon'
-
 class App extends Component {
     render() {
         return (
             <div className="App">
-                <div className = "Navi-Bar">
+                <div className="Navi-Bar">
                     <NavigationBar/>
                 </div>
                 <div className="App-header">
-                    {/*<img src={logo} className="App-logo" alt="logo"/>*/}
-                    {/*<h2>Welcome to React</h2>*/}
-                    <br/>
-                    <br/>
-                    <SearchBar/>
+                    <div className="Intro-Message">
+                        <h1>Gain insight for your next creative design</h1>
+                    </div>
+                    <div className="SearchBar">
+                        <SearchBar/>
+                    </div>
                 </div>
 
-                <div className = "Sorting">
+                <div className="Sorting">
                     <PageNavigation/>
                 </div>
-                <div className = "Sorting">
+                <div className="Sorting">
                     <SortDropdownButton/>
                 </div>
-                <p className="App-intro">
-                    {/*To get started, edit <code>src/App.js</code> and save to reload.*/}
-                </p>
                 <RecommendedTags/>
-                <br/>
-                <br/>
-                <FilterButton/>
-                
-		        <Gallery/>
-                {/*<SortDropdownButton/>*/}
-		        {/*<Gallery/>*/}
-                {/*<SortDropdownButton/>*/}
-		        {/*<Gallery/>*/}
-                {/*<SortDropdownButton/>*/}
+               
 
-                <UploadDropzone/>
-                {/*<PageNavigation/>*/}
-                {/*<SortDropdownButton/>*/}
-		        {/*<Gallery/>*/}
             </div>
 
-        );
+    );
     }
-}
 
-export default App;
+
+    }
+
+    export default App;
