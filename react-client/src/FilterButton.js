@@ -4,6 +4,7 @@
 
 import React, { Component } from 'react'
 import { Button, Collapse, Well } from 'react-bootstrap'
+import UploadDropzone from './UploadDropzone'
 
 class FilterButton extends Component {
     render() {
@@ -13,7 +14,7 @@ class FilterButton extends Component {
                 <Collapse in={ this.state.open }>
                     <div>
                         <Well>
-                            (Filter options)
+                            {/*<UploadDropzone/>*/}
                         </Well>
                     </div>
                 </Collapse>            </div>
