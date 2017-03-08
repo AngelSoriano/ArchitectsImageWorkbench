@@ -11,7 +11,7 @@ var RecommendedTags = React.createClass({
 
         return (
             <div>
-                <ButtonToolbar className = "tagsBar">
+                <ButtonToolbar className="tagsBar">
                     <Button bsStyle="primary">{this.props.text[0]}</Button>
                     <Button bsStyle="success">{this.props.text[1]}</Button>
                     <Button bsStyle="info">{this.props.text[2]}</Button>
