@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var images = require('./routes/images');
-var tags = require('./routes/retriveTags');
+var tags = require('./routes/retrieveTags');
 var admin = require("firebase-admin");
 var app = express();
 

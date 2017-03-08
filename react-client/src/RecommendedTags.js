@@ -6,7 +6,8 @@ var $ = require ('jquery');
 export default class RecommendedTags extends React.Component{
     constructor(props){
         super(props);
-        this.state = {text: []};
+        this.state = {text: ['1', '2', '3', '4', '5', '6']};
+        this.tagList();
     }
 
 
@@ -20,7 +21,7 @@ export default class RecommendedTags extends React.Component{
         return $.getJSON('http://127.0.0.1:3001/retrieveTags/')
             .then((data) => {
             console.log(data);
-            this.setState({text: data.body.data});
+            this.setState({text: JSON.parse(data.data)});
             });
     }
 
@@ -30,7 +31,7 @@ export default class RecommendedTags extends React.Component{
         return (
             <div>
                 <ButtonToolbar className = "tagsBar">
-                    <Button bsStyle="primary">{this.state.text.$1}</Button>
+                    <Button bsStyle="primary">{this.state.text[0]}</Button>
                     <Button bsStyle="success">{this.state.text[1]}</Button>
                     <Button bsStyle="info">{this.state.text[2]}</Button>
                     <Button bsStyle="warning">{this.state.text[3]}</Button>

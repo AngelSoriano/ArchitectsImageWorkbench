@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
     var out = [];
     // Query database and return the tags
 
-    out = {"data":["green", "red", "victorian", "modern", "obtuse"]};
+    out = {data:["green", "red", "victorian", "modern", "obtuse"]};
     console.log(out);
 
     res.send(JSON.stringify(out));
