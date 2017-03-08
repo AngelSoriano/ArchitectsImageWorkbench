@@ -24,5 +24,4 @@ var RecommendedTags = React.createClass({
     }
 });
 
-
-module.exports = RecommendedTags;
+export default RecommendedTags;
