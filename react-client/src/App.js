@@ -31,7 +31,7 @@ class App extends Component {
                     <SortDropdownButton/>
                 </div>
                 <RecommendedTags/>
-               
+
 
             </div>
 
