@@ -14,5 +14,5 @@ function getExtension(file) {
     else return ".png"
 }
 
-const ImageUtility = {getExtension};
+const ImageUtility = {getExtension, formatLabelsData};
 export default ImageUtility;

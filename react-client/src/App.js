@@ -8,6 +8,7 @@ import Gallery from './components/Gallery'
 import UploadComponent from './components/UploadComponent'
 import PageNavigation from './components/PageNavigation'
 import SearchBar from './components/SearchBar'
+
 class App extends Component {
     render() {
         return (
@@ -23,9 +24,7 @@ class App extends Component {
                         <SearchBar/>
                     </div>
                 </div>
-                <div>
-                    <UploadComponent/>
-                </div>
+                <UploadComponent/>
                 <div className="Sorting">
                     <PageNavigation/>
                 </div>
@@ -33,11 +32,11 @@ class App extends Component {
                     <SortDropdownButton/>
                 </div>
                 <RecommendedTags/>
-               
+
 
             </div>
 
-    );
+        );
     }
 }
 export default App;
