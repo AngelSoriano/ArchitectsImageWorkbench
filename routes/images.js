@@ -10,14 +10,13 @@ var ImageUtility;
  * AWS config
  */
 const s3 = new AWS.S3();
-const rekognition = new AWS.Rekognition();
 AWS.config.update(
     {
         accessKeyId: process.env.AWS_ACCESS_KEY_ID,
         secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
         region: 'us-west-2',
     });
-
+const rekognition = new AWS.Rekognition();
 /**
  * Firebase config
  */
@@ -34,7 +33,7 @@ admin.initializeApp({
  */
 const db = admin.database();
 const imagesRef = db.ref('/Images');
-
+const labelsRef = db.ref('/Labels');
 /**
  * Multer config
  * Memory storage keeps file data in buffer
@@ -89,7 +88,7 @@ router.get('/detect', (req, res, next) => {
     rekognition.detectLabels(params, function (err, data) {
         if (err) {
             console.log(err);
-            return res.status(400).send(err)
+            return res.status(err.statusCode).send(err)
         }
         console.log(data);
         res.send(data)
@@ -111,12 +110,13 @@ router.get('/store', (req, res, next) => {
     // Upload title and description, given the imageId generated from S3, to Firebase
     // https://architects-image-workbench.firebaseio.com/images/{imageId}
     imagesRef.child(imageId).set({
-        title: imageTitle,
-        description: imageDescription,
+        Title: imageTitle,
+        Description: imageDescription,
     }, (err) => {
         if (err) {
             console.log(err)
             res.send(error)
+            return
         }
     });
 
@@ -126,8 +126,10 @@ router.get('/store', (req, res, next) => {
     for (var i = 0; i < imageLabelsJson.length; i++) {
         var obj = imageLabelsJson[i];
 
-        imagesRef.child(imageId + "/labels/" + obj.Name).set(obj.Confidence);
+        imagesRef.child(imageId + "/Labels/" + obj.Name).set(obj.Confidence);
+        labelsRef.child(obj.Name + "/Images/" + imageId).set(obj.Confidence);
     }
+
 
 });
 
