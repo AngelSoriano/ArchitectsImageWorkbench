@@ -1,0 +1,154 @@
+exports[`class NavigationBar extends /* istanbul ignore next */_react.Component {
+    render() {
+        return (
+            /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'div', /* istanbul ignore next */{ className: 'NavigationBar', __source: { fileName: _jsxFileName, lineNumber: 13 }, __self: this },
+                /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */_reactBootstrap.Navbar, /* istanbul ignore next */{ __source: { fileName: _jsxFileName, lineNumber: 14 }, __self: this },
+                    /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */_reactBootstrap.Navbar.Header, /* istanbul ignore next */{ __source: { fileName: _jsxFileName, lineNumber: 15 }, __self: this },
+                        /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */_reactBootstrap.Navbar.Brand, /* istanbul ignore next */{ __source: { fileName: _jsxFileName, lineNumber: 16 }, __self: this },
+                            /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'a', /* istanbul ignore next */{ href: '#', __source: { fileName: _jsxFileName, lineNumber: 17 }, __self: this }, /* istanbul ignore next */'Architects Image Workbench'))),
+
+
+                    /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */_reactBootstrap.Nav, /* istanbul ignore next */{ __source: { fileName: _jsxFileName, lineNumber: 20 }, __self: this },
+                        /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */_reactBootstrap.NavItem, /* istanbul ignore next */{ eventKey: 1, href: '#', __source: { fileName: _jsxFileName, lineNumber: 21 }, __self: this }, /* istanbul ignore next */'Link'),
+                        /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */_reactBootstrap.NavItem, /* istanbul ignore next */{ eventKey: 2, href: '#', __source: { fileName: _jsxFileName, lineNumber: 22 }, __self: this }, /* istanbul ignore next */'Link'),
+                        /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */_reactBootstrap.NavDropdown, /* istanbul ignore next */{ className: 'userMenu', eventKey: 3, title: /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */_UserIcon2.default, /* istanbul ignore next */{ __source: { fileName: _jsxFileName, lineNumber: 23 }, __self: this }), id: 'basic-nav-dropdown', pullRight: /* istanbul ignore next */true, __source: { fileName: _jsxFileName, lineNumber: 23 }, __self: this },
+                            /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */_reactBootstrap.MenuItem, /* istanbul ignore next */{ eventKey: 3.1, __source: { fileName: _jsxFileName, lineNumber: 24 }, __self: this }, /* istanbul ignore next */'Action'),
+                            /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */_reactBootstrap.MenuItem, /* istanbul ignore next */{ eventKey: 3.2, __source: { fileName: _jsxFileName, lineNumber: 25 }, __self: this }, /* istanbul ignore next */'Another action'),
+                            /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */_reactBootstrap.MenuItem, /* istanbul ignore next */{ eventKey: 3.3, __source: { fileName: _jsxFileName, lineNumber: 26 }, __self: this }, /* istanbul ignore next */'Something else here'),
+                            /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */_reactBootstrap.MenuItem, /* istanbul ignore next */{ divider: /* istanbul ignore next */true, __source: { fileName: _jsxFileName, lineNumber: 27 }, __self: this }),
+                            /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */_reactBootstrap.MenuItem, /* istanbul ignore next */{ eventKey: 3.3, __source: { fileName: _jsxFileName, lineNumber: 28 }, __self: this }, /* istanbul ignore next */'Separated link'))))));
+
+
+
+
+
+
+    }} renders and matches our snapshot 1`] = `
+<div
+  className="NavigationBar">
+  <nav
+    className="navbar navbar-default">
+    <div
+      className="container">
+      <div
+        className="navbar-header">
+        <a
+          className="navbar-brand"
+          href="#">
+          Architects Image Workbench
+        </a>
+      </div>
+      <ul
+        className="nav navbar-nav"
+        role={null}>
+        <li
+          className=""
+          role="presentation"
+          style={undefined}>
+          <a
+            href="#"
+            onClick={[Function]}
+            role="button">
+            Link
+          </a>
+        </li>
+        <li
+          className=""
+          role="presentation"
+          style={undefined}>
+          <a
+            href="#"
+            onClick={[Function]}
+            role="button">
+            Link
+          </a>
+        </li>
+        <li
+          className="userMenu dropdown"
+          style={undefined}>
+          <a
+            aria-expanded={false}
+            aria-haspopup={true}
+            className="dropdown-toggle"
+            href="#"
+            id="basic-nav-dropdown"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            role="button">
+            <button
+              type="button">
+              <span
+                className="glyphicon glyphicon-user" />
+            </button>
+             
+            <span
+              className="caret" />
+          </a>
+          <ul
+            aria-labelledby="basic-nav-dropdown"
+            className="dropdown-menu dropdown-menu-right"
+            role="menu">
+            <li
+              className=""
+              role="presentation"
+              style={undefined}>
+              <a
+                href="#"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="menuitem"
+                tabIndex="-1">
+                Action
+              </a>
+            </li>
+            <li
+              className=""
+              role="presentation"
+              style={undefined}>
+              <a
+                href="#"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="menuitem"
+                tabIndex="-1">
+                Another action
+              </a>
+            </li>
+            <li
+              className=""
+              role="presentation"
+              style={undefined}>
+              <a
+                href="#"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="menuitem"
+                tabIndex="-1">
+                Something else here
+              </a>
+            </li>
+            <li
+              className="divider"
+              onKeyDown={[Function]}
+              role="separator"
+              style={undefined} />
+            <li
+              className=""
+              role="presentation"
+              style={undefined}>
+              <a
+                href="#"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="menuitem"
+                tabIndex="-1">
+                Separated link
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+`;

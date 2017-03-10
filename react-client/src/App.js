@@ -1,13 +1,12 @@
 import React, {Component} from 'react';
 import './App.css';
 import NavigationBar from './NavigationBar'
-import TopSearch from './topSearch'
 import SortDropdownButton from './SortDropdownButton'
 import RecommendedTags from './RecommendedTags'
-import Gallery from './Gallery'
 import UploadComponent from './UploadComponent'
 import PageNavigation from './PageNavigation'
 import SearchBar from './SearchBar'
+
 class App extends Component {
     render() {
         return (
@@ -23,7 +22,7 @@ class App extends Component {
                         <SearchBar/>
                     </div>
                 </div>
-
+                <UploadComponent/>
                 <div className="Sorting">
                     <PageNavigation/>
                 </div>
@@ -31,14 +30,12 @@ class App extends Component {
                     <SortDropdownButton/>
                 </div>
                 <RecommendedTags/>
-               
+
 
             </div>
 
-    );
+        );
     }
+}
 
-
-    }
-
-    export default App;
+export default App;

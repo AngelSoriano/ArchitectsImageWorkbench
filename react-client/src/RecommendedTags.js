@@ -37,8 +37,10 @@ export default class RecommendedTags extends React.Component{
                     <Button bsStyle="warning">{this.state.text[3]}</Button>
                     <Button bsStyle="danger">{this.state.text[4]}</Button>
                     <Button bsStyle="default">{this.state.text[5]}</Button>
+
                 </ButtonToolbar>
             </div>
         )
     }
 }
+

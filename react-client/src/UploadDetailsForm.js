@@ -17,16 +17,21 @@ class UploadDetailsForm extends Component {
                         <ControlLabel>Title</ControlLabel>
                         <FormControl
                             type="text"
-                            value={this.state.inputValue}
+                            value={this.state.titleValue}
                             placeholder="(Title)"
-                            onChange={this.handleChange}
+                            onChange={this.handleTitleChange}
                         />
                         <FormControl.Feedback />
                     </FormGroup>
 
                     <FormGroup controlId="formControlsTextarea">
                         <ControlLabel>Description</ControlLabel>
-                        <FormControl componentClass="textarea" placeholder="(Description)"/>
+                        <FormControl
+                            componentClass="textarea"
+                            value={this.state.descriptionValue}
+                            placeholder="(Description)"
+                            onChange={this.handleDescriptionChange}
+                        />
                     </FormGroup>
                 </form>
 
@@ -36,13 +41,17 @@ class UploadDetailsForm extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {inputValue: ''}
-        this.handleChange = this.handleChange.bind(this)
+        this.state = {
+            titleValue: '',
+            descriptionValue: ''
+        }
+        this.handleTitleChange = this.handleTitleChange.bind(this)
+        this.handleDescriptionChange = this.handleDescriptionChange.bind(this)
         this.getValidationState = this.getValidationState.bind(this)
     }
 
     getValidationState() {
-        const length = this.state.inputValue.length;
+        const length = this.state.titleValue.length;
         if (length > 1) {
             return 'success'
         } else if (length > 0) {
@@ -50,12 +59,22 @@ class UploadDetailsForm extends Component {
         }
     }
 
-    handleChange(e) {
-        this.setState({inputValue: e.target.value}, function () {
+    handleTitleChange(e) {
+        this.setState({titleValue: e.target.value}, () => {
             this.props.setValidationState(this.getValidationState())
+            if (this.getValidationState() != 'error') {
+                this.props.setImageMeta(this.state.titleValue, this.state.descriptionValue)
+            }
         });
     }
 
+    handleDescriptionChange(e) {
+        this.setState({descriptionValue: e.target.value}, () => {
+            if (this.getValidationState() != 'error') {
+                this.props.setImageMeta(this.state.titleValue, this.state.descriptionValue)
+            }
+        })
+    }
 }
 
 export default UploadDetailsForm
