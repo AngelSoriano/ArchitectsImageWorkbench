@@ -4,7 +4,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import renderer from 'react-test-renderer';
-import NavigationBar from './NavigationBar';
+import NavigationBar from '../components/NavigationBar';
 
 describe(NavigationBar, () => {
     //tests go here

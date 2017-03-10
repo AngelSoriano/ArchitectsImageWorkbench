@@ -6,7 +6,7 @@ import React, {Component} from 'react'
 import {Button, Modal} from 'react-bootstrap'
 import UploadDropzone from './UploadDropzone'
 import UploadDetailsForm from './UploadDetailsForm'
-import ImageService from './service/ImageService'
+import ImageService from '../service/ImageService'
 
 class UploadModal extends Component {
     render() {

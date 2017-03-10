@@ -5,7 +5,7 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, NavItem, MenuItem, NavDropdown } from 'react-bootstrap';
 import UserIcon from './UserIcon';
-import './App.css';
+import '../styles/App.css';
 
 class NavigationBar extends Component {
     render() {

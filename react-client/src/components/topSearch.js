@@ -3,7 +3,7 @@
  */
 var React = require('react');
 import { FormGroup, FormControl} from 'react-bootstrap';
-import './App.css';
+import '../styles/App.css';
 
 var TopSearch = React.createClass({
     getInitialState: function () {

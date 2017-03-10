@@ -4,7 +4,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import renderer from 'react-test-renderer';
-import UploadedComponent from './UploadComponent';
+import UploadedComponent from '../components/UploadComponent';
 
 describe(UploadedComponent, () => {
     const mockShowUploadModal = jest.fn();
