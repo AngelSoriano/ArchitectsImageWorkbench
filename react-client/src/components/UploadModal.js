@@ -6,7 +6,7 @@ import React, {Component} from 'react'
 import {Button, Modal} from 'react-bootstrap'
 import UploadDropzone from './UploadDropzone'
 import UploadDetailsForm from './UploadDetailsForm'
-import ImageService from './service/ImageService'
+import ImageService from '../service/ImageService'
 
 class UploadModal extends Component {
     render() {
@@ -22,7 +22,7 @@ class UploadModal extends Component {
                         {/*Drag and drop image upload component*/}
                         <UploadDropzone onImageDrop={this.onImageDrop }/>
                         {/*The upload input form*/}
-                        <UploadDetailsForm setValidationState={this.setValidationState}/>
+                        <UploadDetailsForm setValidationState={this.setValidationState} setImageMeta={this.setImageMeta}/>
                     </Modal.Body>
 
                     <Modal.Footer>
@@ -43,6 +43,9 @@ class UploadModal extends Component {
             showModal: true,
             uploadedImage: null,
             inputValidationState: '',
+
+            imageTitle: '',
+            imageDescription: ''
         }
 
         this.onImageDrop = this.onImageDrop.bind(this)
@@ -50,6 +53,7 @@ class UploadModal extends Component {
         this.setValidationState = this.setValidationState.bind(this)
         this.upload = this.upload.bind(this)
         this.handleImageUpload = this.handleImageUpload.bind(this)
+        this.setImageMeta = this.setImageMeta.bind(this)
     }
 
     onImageDrop(file) {
@@ -57,9 +61,12 @@ class UploadModal extends Component {
     }
 
     handleImageUpload(file) {
-        ImageService.upload(file, (imageKeyName) => {
-            console.log(imageKeyName)
-            ImageService.detectLabels(imageKeyName)
+        ImageService.upload(file, (imageKey) => {
+            ImageService.detectLabels(imageKey, (labels) => {
+                var title = this.state.imageTitle
+                var description = this.state.imageDescription
+                ImageService.storeImageMeta(imageKey, title, description, labels);
+            })
         });
     }
 
@@ -73,6 +80,15 @@ class UploadModal extends Component {
         this.setState({inputValidationState: status})
     }
 
+    setImageMeta(title, description) {
+        this.setState({imageTitle: title, imageDescription: description})
+    }
+
+    /**
+     * TODO:
+     *  1. Show loading spinner while uploading
+     *  2. Notify user when upload is successful
+     */
     upload() {
         if (this.state.inputValidationState === 'error' || this.state.inputValidationState === '') {
             console.log("Input error")
@@ -82,7 +98,6 @@ class UploadModal extends Component {
             this.handleImageUpload(this.state.uploadedImage)
         this.closeUploadModal()
     }
-
 }
 
 export default UploadModal
