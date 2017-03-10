@@ -25,6 +25,7 @@
     "serve-favicon": "~2.3.2"
   },
   "devDependencies": {
+    "check-dependencies": "^1.0.1",
     "concurrently": "^3.3.0"
   }
 }
