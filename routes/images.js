@@ -132,5 +132,18 @@ router.get('/store', (req, res, next) => {
 
 
 });
+router.get('/delete', (req, res, next) => {
+    const imageId = req.query.imageKey
+    s3.deleteObject({
+        Bucket: "aiw-bucket",
+        Key: imageId
+    }, function (err, data) {
+        if (err) {
+            console.log(err)
+            return res.status(err.statusCode).send(err)
+        }
+        res.send(data)
+    })
+})
 
 module.exports = router;
