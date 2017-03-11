@@ -29,9 +29,9 @@ console.log("elasticsearch configured");
 
 var labelRef = admin.child('Images');
 
-labelRef.on('child_added', upsert);
-labelRef.on('child_changed', upsert);
-labelRef.on('child_removed', remove);
+//labelRef.on('child_added', upsert);
+//labelRef.on('child_changed', upsert);
+//labelRef.on('child_removed', remove);
 
 function upsert(snapshot) {
     console.log("Upsert Stuck");
