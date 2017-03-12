@@ -1,23 +1,20 @@
 /**
  * Created by kami on 3/8/17.
  */
+var Firebase = require('firebase');
 var admin = require("firebase-admin");
 var elastic = require('elasticsearch');
 console.log("Hello");
 // Firebase initialization
-var serviceAccount = require("../service-account-key.json");
-
-admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://architects-image-workbench.firebaseio.com/",
-    storageBucket: "gs://architects-image-workbench.appspot.com/"
-});
+// var serviceAccount = require("../service-account-key.json");
 
 var config = {
     firebaseUrl:'https://architects-image-workbench.firebaseio.com',
     elasticSearchUrl: 'http://search-architect-images-6uxxalaigajwi7jnixorioabfa.us-west-1.es.amazonaws.com/'
 };
 console.log("firebase initialized");
+
+var rootRef = new Firebase(config.firebaseUrl);
 
 //var rootRef = new Firebase(config.firebaseUrl);
 
@@ -27,7 +24,7 @@ var client = new elastic.Client({
 
 console.log("elasticsearch configured");
 
-var labelRef = admin.child('Images');
+var labelRef = rootRef.child('Images');
 
 //labelRef.on('child_added', upsert);
 //labelRef.on('child_changed', upsert);
@@ -59,4 +56,3 @@ function remove(snapshot){
         }
     });
 }
-
