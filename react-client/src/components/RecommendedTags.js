@@ -1,27 +1,46 @@
-var React = require('react');
+import React from 'react';
 import {Button, ButtonToolbar} from 'react-bootstrap';
+var $ = require ('jquery');
 
 
-var RecommendedTags = React.createClass({
-    getDefaultProps: function() {
+export default class RecommendedTags extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {text: ['1', '2', '3', '4', '5', '6']};
+        this.tagList();
+    }
+
+
+    componentWillMount(){
+        this.tagList();
+    }
+
+    tagList() {
         // At some point we would have a backend route to get the recommended tags and store them in array
-        return {text: ["tag1", "tag2", "tag3", "tag4", "tag5", "tag6"]}
-    },
-    render: function() {
+
+        return $.getJSON('http://127.0.0.1:3001/retrieveTags/')
+            .then((data) => {
+            console.log(data);
+            this.setState({text: JSON.parse(data.data)});
+            });
+    }
+
+    render() {
+
 
         return (
             <div>
-                <ButtonToolbar className="tagsBar">
-                    <Button bsStyle="primary">{this.props.text[0]}</Button>
-                    <Button bsStyle="success">{this.props.text[1]}</Button>
-                    <Button bsStyle="info">{this.props.text[2]}</Button>
-                    <Button bsStyle="warning">{this.props.text[3]}</Button>
-                    <Button bsStyle="danger">{this.props.text[4]}</Button>
-                    <Button bsStyle="default">{this.props.text[5]}</Button>
+                <ButtonToolbar className = "tagsBar">
+                    <Button bsStyle="primary">{this.state.text[0]}</Button>
+                    <Button bsStyle="success">{this.state.text[1]}</Button>
+                    <Button bsStyle="info">{this.state.text[2]}</Button>
+                    <Button bsStyle="warning">{this.state.text[3]}</Button>
+                    <Button bsStyle="danger">{this.state.text[4]}</Button>
+                    <Button bsStyle="default">{this.state.text[5]}</Button>
+
                 </ButtonToolbar>
             </div>
         )
     }
-});
+}
 
-export default RecommendedTags;

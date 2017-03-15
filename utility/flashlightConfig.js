@@ -1,4 +1,7 @@
 /**
+ * Created by kami on 3/15/17.
+ */
+/**
  * This config file is provided as a convenience for development. You can either
  * set the environment variables on your server or modify the values here.
  *
@@ -10,7 +13,7 @@
  ***************************************************/
 
 // Your Firebase instance where we will listen and write search results
-exports.FB_URL   = process.env.FB_URL || 'https://<YOUR APP>.firebaseio.com';
+exports.FB_URL   = process.env.FB_URL || 'https://architects-image-workbench.firebaseio.com';
 
 // The path in your Firebase where clients will write search requests
 exports.FB_REQ   = process.env.FB_REQ || 'search/request';
@@ -20,7 +23,7 @@ exports.FB_RES   = process.env.FB_RES || 'search/response';
 
 // See https://firebase.google.com/docs/server/setup for instructions
 // to auto-generate the service-account.json file
-exports.FB_SERVICEACCOUNT = process.env.FB_ACC || 'service-account.json';
+exports.FB_SERVICEACCOUNT = process.env.FB_ACC || './service-account-key.json';
 
 /** ElasticSearch Settings
  *********************************************/
@@ -30,10 +33,10 @@ if( process.env.BONSAI_URL ) {
 }
 else {
   // ElasticSearch server's host URL
-  exports.ES_HOST  = process.env.ES_HOST || 'localhost';
+  exports.ES_HOST  = process.env.ES_HOST || 'search-architect-images-6uxxalaigajwi7jnixorioabfa.us-west-1.es.amazonaws.com';
 
   // ElasticSearch server's host port
-  exports.ES_PORT  = process.env.ES_PORT || '9200';
+  exports.ES_PORT  = process.env.ES_PORT || 80;
 
   // ElasticSearch username for http auth
   exports.ES_USER  = process.env.ES_USER || null;
@@ -46,7 +49,7 @@ else {
  *
  * Each path can have these keys:
  * {string}   path:    [required] the Firebase path to be monitored, for example, `users/profiles`
- *                     would monitor https://<instance>.firebaseio.com/users/profiles
+ *                     would monitor https://<instance>.firebaseio.com/users/profiles-
  * {string}   index:   [required] the name of the ES index to write data into
  * {string}   type:    [required] name of the ES object type this document will be stored as
  * {Array}    fields:  list of fields to be monitored and indexed (defaults to all fields, ignored if "parser" is specified)
@@ -61,21 +64,27 @@ else {
  ****************************************************/
 exports.paths = [
   {
-    path : "users",
+    path : "Labels",
     index: "firebase",
-    type : "user"
+    type : "labels",
   },
   {
-    path  : "messages",
-    index : "firebase",
-    type  : "message",
-    fields: ['msg', 'name'],
-    filter: function(data) { return data.name !== 'system'; }
-    // see readme
-    //, parser: function(data) { data.msg = data.msg.toLowerCase(); return data; }
-    // see readme
-    //, refBuilder: function(ref, path) { return ref.orderBy(path.sortField).startAt(Date.now()); }
+    path : "Images",
+    index: "firebas",
+    type: "images"
   }
+  /*
+   {
+   path  : "messages",
+   index : "firebase",
+   type  : "message",
+   //fields: ['msg', 'name'],
+   //filter: function(data) { return data.name !== 'system'; }
+   // see readme
+   //, parser: function(data) { data.msg = data.msg.toLowerCase(); return data; }
+   // see readme
+   //, refBuilder: function(ref, path) { return ref.orderBy(path.sortField).startAt(Date.now()); }
+   }*/
 ];
 
 // Paths can also be stored in Firebase! See README for details.
@@ -92,8 +101,8 @@ exports.ES_OPTS = {
 // How often should the script remove unclaimed search results? probably just leave this alone
 exports.CLEANUP_INTERVAL =
   process.env.NODE_ENV === 'production' ?
-  3600 * 1000 /* once an hour */ :
-  60 * 1000 /* once a minute */;
+    3600 * 1000 /* once an hour */ :
+    60 * 1000 /* once a minute */;
 
 function processBonsaiUrl(exports, url) {
   var matches = url.match(/^https?:\/\/([^:]+):([^@]+)@([^/]+)\/?$/);

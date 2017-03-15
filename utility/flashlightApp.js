@@ -1,14 +1,18 @@
 #!/usr/bin/env node
 
+/**
+ * Created by kami on 3/15/17.
+ */
+
 /*
  * @version 0.3, 3 June 2014
  */
 
 var elasticsearch = require('elasticsearch'),
-  conf = require('./config'),
-  fbutil = require('./lib/fbutil'),
-  PathMonitor = require('./lib/PathMonitor'),
-  SearchQueue = require('./lib/SearchQueue');
+  conf = require('./flashlightConfig'),
+  fbutil = require('../utility/firebaseLoader'),
+  PathMonitor = require('../flashlight/lib/PathMonitor'),
+  SearchQueue = require('../flashlight/lib/SearchQueue');
 
 var escOptions = {
   hosts: [{
@@ -23,10 +27,10 @@ for (var attrname in conf.ES_OPTS) {
     escOptions[attrname] = conf.ES_OPTS[attrname];
   }
 }
-
+console.log('About to connect elastic');
 // connect to ElasticSearch
 var esc = new elasticsearch.Client(escOptions);
-
+console.log('elastic connected');
 console.log('Connecting to ElasticSearch host %s:%s'.grey, conf.ES_HOST, conf.ES_PORT);
 
 var timeoutObj = setInterval(function() {
@@ -40,7 +44,7 @@ var timeoutObj = setInterval(function() {
 
 function initFlashlight() {
   console.log('Connecting to Firebase %s'.grey, conf.FB_URL);
-  fbutil.init(conf.FB_URL, conf.FB_SERVICEACCOUNT);
+  fbutil.init();
   PathMonitor.process(esc, conf.paths, conf.FB_PATH);
   SearchQueue.init(esc, conf.FB_REQ, conf.FB_RES, conf.CLEANUP_INTERVAL);
 }
