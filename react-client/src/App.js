@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
-import './App.css';
-import NavigationBar from './NavigationBar'
-import SortDropdownButton from './SortDropdownButton'
-import RecommendedTags from './RecommendedTags'
-import UploadComponent from './UploadComponent'
-import PageNavigation from './PageNavigation'
-import SearchBar from './SearchBar'
+import './styles/App.css';
+import NavigationBar from './components/NavigationBar'
+import TopSearch from './components/topSearch'
+import SortDropdownButton from './components/SortDropdownButton'
+import RecommendedTags from './components/RecommendedTags'
+import Gallery from './components/Gallery'
+import UploadComponent from './components/UploadComponent'
+import PageNavigation from './components/PageNavigation'
+import SearchBar from './components/SearchBar'
 
 class App extends Component {
     render() {
@@ -31,11 +33,10 @@ class App extends Component {
                 </div>
                 <RecommendedTags/>
 
-
+                
             </div>
 
         );
     }
 }
-
 export default App;

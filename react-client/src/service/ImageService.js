@@ -63,12 +63,25 @@ function storeImageMeta(imageKey, title, description, labels) {
         .query({description: description})
         .query({labels: labels})
         .end((err, res) => {
-            if (err) console.log(err + res.text);
+            if (err) {
+                console.log(err + res.text);
+                deleteImage(imageKey);
+            }
             else {
                 console.log(res)
             }
         })
 }
+function deleteImage(imageKey) {
+    request.get('images/delete').query({imageKey: imageKey}).end((err, res) => {
+        if(err) {
+            console.log(err + res.text);
+        }
+        else {
+            console.log(res)
+        }
+    })
+}
 
-const ImageService = {upload, detectLabels, storeImageMeta};
+const ImageService = {upload, detectLabels, storeImageMeta, deleteImage};
 export default ImageService;

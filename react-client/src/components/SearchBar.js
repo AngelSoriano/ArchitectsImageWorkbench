@@ -3,7 +3,7 @@
  */
 import React, {Component} from 'react';
 import {FormGroup,FormControl,ControlLabel,HelpBlock,Button} from 'react-bootstrap';
-import './App.css';
+import '../styles/App.css';
 
 class SearchBar extends React.Component {
   constructor(props) {

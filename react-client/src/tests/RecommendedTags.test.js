@@ -4,16 +4,16 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import renderer from 'react-test-renderer';
-import PageNavigation from './PageNavigation';
+import RecommendedTags from '../components/RecommendedTags';
 
-describe(PageNavigation, () => {
+describe(RecommendedTags, () => {
     //tests go here
     it('renders and matches our snapshot', () => {
         const component = renderer.create(
-            <PageNavigation/>
+            <RecommendedTags/>
         );
         const tree = component.toJSON();
         expect(tree).toMatchSnapshot();
     });
-    it()
+
 });
