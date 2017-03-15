@@ -10,7 +10,7 @@
 
 var elasticsearch = require('elasticsearch'),
   conf = require('./flashlightConfig'),
-  fbutil = require('../flashlight/lib/fbutil'),
+  fbutil = require('../utility/firebaseLoader'),
   PathMonitor = require('../flashlight/lib/PathMonitor'),
   SearchQueue = require('../flashlight/lib/SearchQueue');
 
@@ -44,7 +44,7 @@ var timeoutObj = setInterval(function() {
 
 function initFlashlight() {
   console.log('Connecting to Firebase %s'.grey, conf.FB_URL);
-  fbutil.init(conf.FB_URL, conf.FB_SERVICEACCOUNT);
+  fbutil.init();
   PathMonitor.process(esc, conf.paths, conf.FB_PATH);
   SearchQueue.init(esc, conf.FB_REQ, conf.FB_RES, conf.CLEANUP_INTERVAL);
 }
