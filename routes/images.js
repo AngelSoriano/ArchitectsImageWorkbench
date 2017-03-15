@@ -3,7 +3,7 @@ var router = express.Router();
 var AWS = require('aws-sdk');
 var multer = require('multer');
 var uuid = require('node-uuid');
-var admin = require('firebase-admin')
+var admin = require('firebase-admin');
 var ImageUtility;
 
 /**
