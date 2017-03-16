@@ -2,7 +2,8 @@
  * Created by Scott Ligon on 2/18/17.
  */
 import React, {Component} from 'react';
-import './App.css';
+import {FormGroup,FormControl,ControlLabel,HelpBlock,Button} from 'react-bootstrap';
+import '../styles/App.css';
 
 class SearchBar extends Component {
   constructor(props) {

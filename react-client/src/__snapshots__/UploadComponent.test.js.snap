@@ -1,0 +1,37 @@
+exports[`class UploadComponent extends /* istanbul ignore next */_react.Component {
+    render() {
+        return (
+            /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'div', /* istanbul ignore next */{ className: 'UploadComponent', __source: { fileName: _jsxFileName, lineNumber: 12 }, __self: this },
+                /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */_reactBootstrap.Button, /* istanbul ignore next */{ bsStyle: 'warning', onClick: this.showUploadModal, __source: { fileName: _jsxFileName, lineNumber: 13 }, __self: this }, /* istanbul ignore next */'Upload'),
+
+                this.state.showModal ? /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */_UploadModal2.default, /* istanbul ignore next */{ closeUploadModal: this.closeUploadModal, __source: { fileName: _jsxFileName, lineNumber: 15 }, __self: this }) : null));
+
+
+    }
+
+    constructor(props) {
+        super(props);
+        this.state = { showModal: false };
+        this.showUploadModal = this.showUploadModal.bind(this);
+        this.closeUploadModal = this.closeUploadModal.bind(this);
+
+    }
+
+    showUploadModal() {
+        this.setState({ showModal: true });
+    }
+
+    closeUploadModal() {
+        this.setState({ showModal: false });
+    }} renders and matches our snapshot 1`] = `
+<div
+  className="UploadComponent">
+  <button
+    className="btn btn-warning"
+    disabled={false}
+    onClick={[Function]}
+    type="button">
+    Upload
+  </button>
+</div>
+`;

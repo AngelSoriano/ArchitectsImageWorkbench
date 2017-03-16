@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import './App.css';
-import NavigationBar from './NavigationBar'
-import UploadComponent from './UploadComponent'
-import SearchBar from './SearchBar'
-import ImageGallery from './ImageGallery'
-import ResultsComponent from './ResultsComponent'
+import ResultsComponent from './components/ResultsComponent'
+import './styles/App.css';
+import NavigationBar from './components/NavigationBar'
+import UploadComponent from './components/UploadComponent'
+import SearchBar from './components/SearchBar'
 
 class App extends Component {
     render() {
@@ -25,7 +24,7 @@ class App extends Component {
                 <UploadComponent/>
                 {this.state.doSearch ? <ResultsComponent/> : null}
 
-
+                
             </div>
 
         );
@@ -43,5 +42,4 @@ class App extends Component {
     }
 
 }
-
 export default App;
