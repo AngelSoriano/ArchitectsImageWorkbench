@@ -64,28 +64,28 @@
         return query;
     }
 
-    function buildQueryBody(query, term, matchWholePhrase) {
-        if( matchWholePhrase ) {
-            var body = query.body = {};
-            body.query = {
-                // match_phrase matches the phrase exactly instead of breaking it
-                // into individual words
-                "match_phrase": {
-                    // this is the field name, _all is a meta indicating any field
-                    "_all": term
-                }
-                /**
-                 * Match breaks up individual words and matches any
-                 * This is the equivalent of the `q` string below
-                 "match": {
-          "_all": term
-        }
-                 */
-            }
-        }
-        else {
-            query.q = term;
-        }
+    function buildQueryBody(query, term) {
+        // if( matchWholePhrase ) {
+        //     var body = query.body = {};
+        //     body.query = {
+        //         // match_phrase matches the phrase exactly instead of breaking it
+        //         // into individual words
+        //         "match_phrase": {
+        //             // this is the field name, _all is a meta indicating any field
+        //             "_all": term
+        //         }
+        //         /**
+        //          * Match breaks up individual words and matches any
+        //          * This is the equivalent of the `q` string below
+        //          "match": {
+        //   "_all": term
+        // }
+        //          */
+        //     }
+        // }
+
+        query.q = term;
+
     }
 
     // conduct a search by writing it to the search/request path
