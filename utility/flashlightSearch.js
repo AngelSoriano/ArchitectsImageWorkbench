@@ -9,14 +9,12 @@
     /**====== SET ME =====**/
         // Set the configuration for your app
         // TODO: Replace with your project's config object
-    var config = {
-            databaseURL: "https://architects-image-workbench.firebaseio.com/"
-        };
+    var config = require("./flashlightConfig")
 
     // TODO: Replace this with the path to your ElasticSearch queue
     // TODO: This is monitored by your app.js node script on the server
     // TODO: And this should match your seed/security_rules.json
-    var PATH = "search";
+    var PATH = "../flashlight/lib/SearchQueue";
     /**====== /SET ME =====**/
     /**====== /SET ME =====**/
     /**====== /SET ME =====**/
@@ -44,12 +42,12 @@
 
     function buildQuery($form) {
         // this just gets data out of the form
-        var index = $form.find('[name=index]').val();
-        var type = $form.find('[name="type"]:checked').val();
+        var index = "firebase";
+        var type = "labels"
         var term = $form.find('[name="term"]').val();
-        var matchWholePhrase = $form.find('[name="exact"]').is(':checked');
-        var size = parseInt($form.find('[name="size"]').val());
-        var from = parseInt($form.find('[name="from"]').val());
+        // var matchWholePhrase = $form.find('[name="exact"]').is(':checked');
+        // var size = parseInt($form.find('[name="size"]').val());
+        // var from = parseInt($form.find('[name="from"]').val());
 
         // skeleton of the JSON object we will write to DB
         var query = {
@@ -58,10 +56,10 @@
         };
 
         // size and from are used for pagination
-        if( !isNaN(size) ) { query.size = size; }
-        if( !isNaN(from) ) { query.from = from; }
+        // if( !isNaN(size) ) { query.size = size; }
+        // if( !isNaN(from) ) { query.from = from; }
 
-        buildQueryBody(query, term, matchWholePhrase);
+        buildQueryBody(query, term);
 
         return query;
     }
