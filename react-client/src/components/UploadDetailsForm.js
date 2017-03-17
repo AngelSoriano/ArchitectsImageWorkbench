@@ -62,7 +62,7 @@ class UploadDetailsForm extends Component {
     handleTitleChange(e) {
         this.setState({titleValue: e.target.value}, () => {
             this.props.setValidationState(this.getValidationState())
-            if (this.getValidationState() != 'error') {
+            if (this.getValidationState() !== 'error') {
                 this.props.setImageMeta(this.state.titleValue, this.state.descriptionValue)
             }
         });
@@ -70,7 +70,7 @@ class UploadDetailsForm extends Component {
 
     handleDescriptionChange(e) {
         this.setState({descriptionValue: e.target.value}, () => {
-            if (this.getValidationState() != 'error') {
+            if (this.getValidationState() !== 'error') {
                 this.props.setImageMeta(this.state.titleValue, this.state.descriptionValue)
             }
         })
