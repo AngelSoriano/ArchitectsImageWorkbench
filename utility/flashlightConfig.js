@@ -70,7 +70,7 @@ exports.paths = [
   },
   {
     path : "Images",
-    index: "firebas",
+    index: "firebase",
     type: "images"
   }
   /*
