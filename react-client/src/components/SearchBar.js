@@ -4,6 +4,7 @@
 import React, {Component} from 'react';
 import {FormGroup,FormControl,ControlLabel,HelpBlock,Button} from 'react-bootstrap';
 import '../styles/App.css';
+var search = require('../../../utility/flashlightSearch');
 
 class SearchBar extends Component {
   constructor(props) {
@@ -18,8 +19,11 @@ class SearchBar extends Component {
     this.setState({value: event.target.value});
   }
 
+
   handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value);
+    var searchInput = this.state.value;
+    alert('A name was submitted: ' + searchInput);
+    var searchQuery = searchInput;
     event.preventDefault();
     this.props.doSearch(true)
   }

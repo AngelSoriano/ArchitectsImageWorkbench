@@ -1,6 +1,9 @@
 /**
  * Created by scottdligon on 3/17/17.
  */
+
+var searchInput = require('../react-client/src/components/SearchBar')
+
 (function ($) {
     "use strict";
 
@@ -9,7 +12,9 @@
     /**====== SET ME =====**/
         // Set the configuration for your app
         // TODO: Replace with your project's config object
-    var config = require("./flashlightConfig")
+    var config = {
+            databaseURL: "https://architects-image-workbench.firebaseio.com/"
+        };
 
     // TODO: Replace this with the path to your ElasticSearch queue
     // TODO: This is monitored by your app.js node script on the server
@@ -44,10 +49,10 @@
         // this just gets data out of the form
         var index = "firebase";
         var type = "labels"
-        var term = $form.find('[name="term"]').val();
-        // var matchWholePhrase = $form.find('[name="exact"]').is(':checked');
-        // var size = parseInt($form.find('[name="size"]').val());
-        // var from = parseInt($form.find('[name="from"]').val());
+        var term = searchInput.name;
+        var matchWholePhrase = $form.find('[name="exact"]').is(':checked');
+        var size = parseInt($form.find('[name="size"]').val());
+        var from = parseInt($form.find('[name="from"]').val());
 
         // skeleton of the JSON object we will write to DB
         var query = {
@@ -56,8 +61,8 @@
         };
 
         // size and from are used for pagination
-        // if( !isNaN(size) ) { query.size = size; }
-        // if( !isNaN(from) ) { query.from = from; }
+        if( !isNaN(size) ) { query.size = size; }
+        if( !isNaN(from) ) { query.from = from; }
 
         buildQueryBody(query, term);
 
@@ -65,24 +70,24 @@
     }
 
     function buildQueryBody(query, term) {
-        // if( matchWholePhrase ) {
-        //     var body = query.body = {};
-        //     body.query = {
-        //         // match_phrase matches the phrase exactly instead of breaking it
-        //         // into individual words
-        //         "match_phrase": {
-        //             // this is the field name, _all is a meta indicating any field
-        //             "_all": term
-        //         }
-        //         /**
-        //          * Match breaks up individual words and matches any
-        //          * This is the equivalent of the `q` string below
-        //          "match": {
-        //   "_all": term
-        // }
-        //          */
-        //     }
-        // }
+        if( matchWholePhrase ) {
+            var body = query.body = {};
+            body.query = {
+                // match_phrase matches the phrase exactly instead of breaking it
+                // into individual words
+                "match_phrase": {
+                    // this is the field name, _all is a meta indicating any field
+                    "_all": term
+                }
+                /**
+                 * Match breaks up individual words and matches any
+                 * This is the equivalent of the `q` string below
+                 "match": {
+          "_all": term
+        }
+                 */
+            }
+        }
 
         query.q = term;
 
@@ -93,7 +98,7 @@
         var ref = database.ref().child(PATH);
         var key = ref.child('request').push(query).key;
 
-        console.log('search', key, query);
+        console.log('FIREBASE-search', key, query);
         $('#query').text(JSON.stringify(query, null, 2));
         ref.child('response/'+key).on('value', showResults);
     }
