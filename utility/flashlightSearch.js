@@ -47,7 +47,7 @@
         var index = $form.find('[name=index]').val();
         var type = $form.find('[name="type"]:checked').val();
         var term = $form.find('[name="term"]').val();
-        var matchWholePhrase = $form.find('[name="exact"]').is(':checked');
+        // var matchWholePhrase = $form.find('[name="exact"]').is(':checked');
         var size = parseInt($form.find('[name="size"]').val());
         var from = parseInt($form.find('[name="from"]').val());
 

@@ -12,6 +12,7 @@
     "babel-cli": "6.14.0",
     "babel-core": "6.14.0",
     "body-parser": "~1.16.0",
+    "bodybuilder": "file:bodybuilder",
     "colors": "^1.1.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.0",
