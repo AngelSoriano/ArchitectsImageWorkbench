@@ -53,8 +53,7 @@
 
         // skeleton of the JSON object we will write to DB
         var query = {
-            index: index,
-            type: type
+
         };
 
         // size and from are used for pagination
