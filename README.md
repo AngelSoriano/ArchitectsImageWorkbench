@@ -1,14 +1,11 @@
 # ArchitectsImageWorkbench
 ## Starting the app
+- Start the Node.js server and ReactJS client
 ```
 npm start
 ```
-If you get errors:
-- Install npm
+## After `git pull`:
+- Run script to install dependencies
 ```
-npm install
-```
-- Install dependencies (while in the top-level directory)
-```
-npm i && cd react-client && npm i && cd ..
+./scripts/install-dependencies.sh
 ```

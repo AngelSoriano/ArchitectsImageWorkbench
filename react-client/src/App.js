@@ -1,15 +1,13 @@
 import React, {Component} from 'react';
+import ResultsComponent from './components/ResultsComponent'
 import './styles/App.css';
 import NavigationBar from './components/NavigationBar'
-import TopSearch from './components/topSearch'
-import {Router, Route, Link, IndexRoute, hashHistory, browserHistory, DefaultRoute, IndexLink} from 'react-router'
+import {Router, Route, IndexRoute, hashHistory, DefaultRoute} from 'react-router'
 import SortDropdownButton from './components/SortDropdownButton'
 import RecommendedTags from './components/RecommendedTags'
-import Gallery from './components/Gallery'
 import UploadComponent from './components/UploadComponent'
-import PageNavigation from './components/PageNavigation'
 import SearchBar from './components/SearchBar'
-
+import ImageGallery from './components/ImageGallery'
 class App extends Component {
     render() {
         return (
@@ -19,35 +17,32 @@ class App extends Component {
                         <IndexRoute component={Home}/>
                             <Route path='/Link1' component={Link1}/>
                             <Route path="/Link2" component={Link2}/>
-                        <div className="App-header">
-                            <div className="Intro-Message">
-                                <h1>Gain insight for your next creative design</h1>
-                            </div>
-                            <div className="SearchBar">
-                                <SearchBar/>
-                            </div>
-                        </div>
-                        <UploadComponent/>
-                        <div className="Sorting">
-                            <PageNavigation/>
-                        </div>
-                        <div className="Sorting">
-                            <SortDropdownButton/>
-                        </div>
-                        <RecommendedTags/>
+
                     </Route>
                 </Router>
-
             </div>
 
         );
     }
+
+    constructor(props) {
+        super(props);
+        this.state = {doSearch: false}
+
+        this.doSearch = this.doSearch.bind(this)
+    }
+
+    doSearch() {
+        this.setState({doSearch: true})
+    }
+
 }
 
 const Link1 = () => <h1>Hello from Link1!</h1>
 const Link2 = () => <h1> Hello from Link2!</h1>
 
 const Home = (props) => <div>
+
     <div className="App-header">
         <div className="Intro-Message">
             <h1>Gain insight for your next creative design</h1>
@@ -56,14 +51,9 @@ const Home = (props) => <div>
             <SearchBar/>
         </div>
     </div>
+    <ImageGallery/>
     <UploadComponent/>
-    <div className="Sorting">
-        <PageNavigation/>
-    </div>
-    <div className="Sorting">
-        <SortDropdownButton/>
-    </div>
-    <RecommendedTags/>
+
     {props.children}
 </div>
 

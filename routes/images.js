@@ -3,7 +3,7 @@ var router = express.Router();
 var AWS = require('aws-sdk');
 var multer = require('multer');
 var uuid = require('node-uuid');
-var admin = require('firebase-admin')
+var admin = require('firebase-admin');
 var ImageUtility;
 
 /**
@@ -49,7 +49,7 @@ const upload = multer({
  *  Uploads the image file to Amazon S3
  *
  */
-router.post('/upload', upload.single('imageFile'), (req, res) => {
+router.post('/upload/s3', upload.single('imageFile'), (req, res) => {
     var imageKey = uuid.v4()
     s3.putObject({
         Bucket: 'aiw-bucket',
@@ -100,7 +100,7 @@ router.get('/detect', (req, res, next) => {
  * Stores meta info for uploaded image to Firebase database
  *
  */
-router.get('/store', (req, res, next) => {
+router.get('/store/fb', (req, res, next) => {
     // Grab values passed from client
     const imageId = req.query.imageKey
     const imageTitle = req.query.title
@@ -129,10 +129,9 @@ router.get('/store', (req, res, next) => {
         imagesRef.child(imageId + "/Labels/" + obj.Name).set(obj.Confidence);
         labelsRef.child(obj.Name + "/Images/" + imageId).set(obj.Confidence);
     }
-
-
 });
-router.get('/delete', (req, res, next) => {
+
+router.get('/delete/s3', (req, res, next) => {
     const imageId = req.query.imageKey
     s3.deleteObject({
         Bucket: "aiw-bucket",

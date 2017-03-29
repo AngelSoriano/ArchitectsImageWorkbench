@@ -15,7 +15,7 @@ import request from 'superagent';
  * @param callback Takes the image's key as a parameter on success
  */
 function upload(file, callback) {
-    return request.post('images/upload')
+    return request.post('images/upload/s3')
         .attach('imageFile', file)
         .set('Accept', 'application/json')
         .end((err, res) => {
@@ -57,7 +57,7 @@ function detectLabels(imageKey, callback) {
  * @param labels Generated labels detected by Amazon Rekognition
  */
 function storeImageMeta(imageKey, title, description, labels) {
-    request.get('images/store')
+    request.get('images/store/fb')
         .query({imageKey: imageKey})
         .query({title: title})
         .query({description: description})
@@ -72,8 +72,9 @@ function storeImageMeta(imageKey, title, description, labels) {
             }
         })
 }
+
 function deleteImage(imageKey) {
-    request.get('images/delete').query({imageKey: imageKey}).end((err, res) => {
+    request.get('images/s3/delete').query({imageKey: imageKey}).end((err, res) => {
         if(err) {
             console.log(err + res.text);
         }
