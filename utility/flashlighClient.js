@@ -31,8 +31,8 @@ function search(index, type, searchTerm, callback = defaultCallback){
     console.log(snap);
     if(snap.val() !== null){        // wait for data
       console.log("snap has a value");
-      snap.ref().off('value', fn);  // stop listenning
-      snap.ref().remove();          // clear queue
+      snap.ref.off('value', fn);  // stop listenning
+      snap.ref.remove();          // clear queue
       callback(snap.val());
 
     }
