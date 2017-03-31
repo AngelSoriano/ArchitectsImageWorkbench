@@ -17,6 +17,7 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.0",
     "elasticsearch": "^5.0.0",
+    "elasticsearchclient": "^0.5.3",
     "express": "~4.14.1",
     "firebase": "^3.7.0",
     "firebase-admin": "^4.1.1",
