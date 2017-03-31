@@ -23,7 +23,7 @@ client.ping({
 function getmeres(client)
 {
     client.search({
-        index: 'researchtest',
+        index: 'firebase',
         body: {
             query: {
                 terms:{

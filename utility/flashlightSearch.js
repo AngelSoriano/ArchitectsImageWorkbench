@@ -1,6 +1,12 @@
 /**
  * Created by scottdligon on 3/17/17.
  */
+global.jQuery = require('jquery');
+var firebase = require('firebase');
+// var $ = require('jquery')(require("jsdom")).jsdom().parentWindow();
+var $ = require('../node_modules/jquery/dist/jquery').parentWindow;
+// $("body").append("<div>TEST</div>");
+// console.log($("body").html());
 (function ($) {
     "use strict";
 
@@ -16,7 +22,7 @@
     // TODO: Replace this with the path to your ElasticSearch queue
     // TODO: This is monitored by your app.js node script on the server
     // TODO: And this should match your seed/security_rules.json
-    var PATH = "search";
+    var PATH = "architects-image-workbench.firebaseio.com/search";
     /**====== /SET ME =====**/
     /**====== /SET ME =====**/
     /**====== /SET ME =====**/
@@ -53,7 +59,8 @@
 
         // skeleton of the JSON object we will write to DB
         var query = {
-
+            index: "firebase",
+            type: "labels"
         };
 
         // size and from are used for pagination
@@ -65,24 +72,22 @@
         return query;
     }
 
+
+
     function buildQueryBody(query, term, matchWholePhrase) {
         if( matchWholePhrase ) {
             var body = query.body = {};
             body.query = {
-                // match_phrase matches the phrase exactly instead of breaking it
-                // into individual words
-                "match_phrase": {
-                    // this is the field name, _all is a meta indicating any field
-                    "_all": term
+                "from" : 0,
+                "size" : 50,
+                "body": {
+                    "query": {
+                        "match": {
+                            "_all": "Restaurant"
+                        }
+                    }
                 }
-                /**
-                 * Match breaks up individual words and matches any
-                 * This is the equivalent of the `q` string below
-                 "match": {
-          "_all": term
-        }
-                 */
-            }
+            };
         }
         else {
             query.q = term;
