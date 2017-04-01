@@ -33,7 +33,8 @@ function processRequest(snap) {
         //formatting query to be sent
             "query": {
                 'match': {
-                    '_id': dat.query }
+                    '_id': dat.query
+                }
             }})
       .on('data', function(data) {
             // Post the results to https://<INSTANCE>.firebaseio.com/search/response
@@ -41,5 +42,6 @@ function processRequest(snap) {
       })
       .on('error', function(error){ /* process errors */ })
       .exec()
+    console.log('_id', dat.query)
 }
 

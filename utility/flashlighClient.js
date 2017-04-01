@@ -54,7 +54,7 @@ function defaultCallback(data) {
 // test
 function dotest() {
   query = "Restaurant";
-  console.log("in Do test");
+  console.log("in Do test:", query);
   search('firebase', 'label', query, defaultCallback);
   console.log("dont with do test");
 }
