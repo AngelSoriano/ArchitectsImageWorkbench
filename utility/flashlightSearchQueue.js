@@ -29,7 +29,12 @@ function processRequest(snap) {
     var dat = snap.val();
     // Query ElasticSearch
 
-    client.search(dat.index, dat.type, { "query": { 'match': { _id: dat.query } }})
+    client.search(dat.index, dat.type, {
+        //formatting query to be sent
+            "query": {
+                'match': {
+                    '_id': dat.query }
+            }})
       .on('data', function(data) {
             // Post the results to https://<INSTANCE>.firebaseio.com/search/response
             queue.child('response/'+snap.key).set(data);

@@ -53,12 +53,7 @@ function defaultCallback(data) {
 
 // test
 function dotest() {
-  query = {
-      "match": {
-        "_id": "Restaurant"
-      }
-
-  };
+  query = "Restaurant";
   console.log("in Do test");
   search('firebase', 'label', query, defaultCallback);
   console.log("dont with do test");
