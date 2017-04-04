@@ -44,17 +44,17 @@ function processRequest(snap) {
       .exec()
     console.log('_id', dat.query)
     //printing out query structure to console
-    console.log(client.search('firebase', 'label', {
-        //formatting query to be sent
-        "query": {
-            'match': {
-                '_id': dat.query
-            }
-        }})
-        .on('data', function(data) {
-            // Post the results to https://<INSTANCE>.firebaseio.com/search/response
-            queue.child('response/'+snap.key).set(data);
-        }))
+    // console.log(client.search('firebase', {
+    //     //formatting query to be sent
+    //     "query": {
+    //         'match': {
+    //             '_id': dat.query
+    //         }
+    //     }})
+    //     .on('data', function(data) {
+    //         // Post the results to https://<INSTANCE>.firebaseio.com/search/response
+    //         queue.child('response/'+snap.key).set(data);
+    //     }))
 
 }
 

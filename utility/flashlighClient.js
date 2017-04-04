@@ -20,6 +20,7 @@ var database = firebase.database();
 var queue = database.ref('architects-image-workbench');
 
 
+
 // search functino that listens to search/request and search/response
 function search(index, type, searchTerm, callback = defaultCallback){
   // post to firebase/search/request
