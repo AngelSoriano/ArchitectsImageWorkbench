@@ -4,7 +4,6 @@
 
 import React, { Component } from 'react';
 import { Navbar, Nav, NavItem, MenuItem, NavDropdown } from 'react-bootstrap';
-import { DefaultRoute } from 'react-router'
 import { LinkContainer } from 'react-router-bootstrap'
 import UserIcon from './UserIcon';
 import '../styles/App.css';
@@ -17,7 +16,7 @@ class NavigationBar extends Component {
                     <Navbar.Header>
                         <Navbar.Brand>
                             <LinkContainer to="/">
-                            <a>Architects Image Workbench</a>
+                                <a>Architects Image Workbench</a>
                             </LinkContainer>
                         </Navbar.Brand>
                     </Navbar.Header>
