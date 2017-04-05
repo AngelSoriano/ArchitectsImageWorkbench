@@ -29,6 +29,7 @@ function search(index, type, searchTerm, callback = defaultCallback){
   // wait for result by listening to search/response
   queue.child('response/'+reqRef.key).on('value', function fn(snap){
     console.log("got a response");
+    //SNAP is the json format being returned
     console.log(snap);
     if(snap.val() !== null){        // wait for data
       console.log("snap has a value");
@@ -51,6 +52,12 @@ function defaultCallback(data) {
     });
   }
 }
+
+// var querySearch = {
+//   global.typed_query: "Restaurant"
+// }
+
+console.log("GLOBAL: ", global.typed_query);
 
 // test
 function dotest() {
