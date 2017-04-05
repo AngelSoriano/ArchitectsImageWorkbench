@@ -15,8 +15,9 @@ class App extends Component {
                 <Router history={hashHistory}>
                     <Route path="/" component={Container}>
                         <IndexRoute component={Home}/>
-                            <Route path='/Link1' component={Link1}/>
-                            <Route path="/Link2" component={Link2}/>
+
+                        <Route path='/Link1' component={Link1}/>
+                        <Route path="/Link2" component={Link2}/>
 
                     </Route>
                 </Router>
@@ -61,4 +62,8 @@ const Container = (props) => <div>
     <NavigationBar />
     {props.children}
 </div>
+<<<<<<< HEAD
 export default App;
+=======
+export default App;
+>>>>>>> legend

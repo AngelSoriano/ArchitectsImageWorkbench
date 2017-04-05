@@ -9,7 +9,9 @@ var index = require('./routes/index');
 var images = require('./routes/images');
 var tags = require('./routes/retrieveTags');
 var admin = require("firebase-admin");
-var search = require("./utility/flashlightSearchv2");
+
+var searchQueue = require("./utility/flashlightSearchQueue");
+
 var app = express();
 
 // firebase-admin setup
