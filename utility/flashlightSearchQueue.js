@@ -6,7 +6,7 @@
 // handles the interactions with ElasticSearch, and pushes results back into /search/response:
 
 var firebase = require ('firebase-admin');
-var ElasticClient = require ('elasticsearchclient');//check with Angel
+var ElasticClient = require ('elasticsearchclient');
 conf = require('./flashlightConfig');
 
 
@@ -43,18 +43,6 @@ function processRequest(snap) {
       .on('error', function(error){ /* process errors */ })
       .exec()
     console.log('_id', dat.query)
-    //printing out query structure to console
-    // console.log(client.search('firebase', {
-    //     //formatting query to be sent
-    //     "query": {
-    //         'match': {
-    //             '_id': dat.query
-    //         }
-    //     }})
-    //     .on('data', function(data) {
-    //         // Post the results to https://<INSTANCE>.firebaseio.com/search/response
-    //         queue.child('response/'+snap.key).set(data);
-    //     }))
 
 }
 

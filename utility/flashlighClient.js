@@ -1,6 +1,7 @@
 /**
  * Created by kami on 3/31/17.
  */
+// import React from 'react';
 var firebase = require('firebase-admin');
 var conf = require('./flashlightConfig');
 
@@ -29,7 +30,7 @@ function search(index, type, searchTerm, callback = defaultCallback){
   // wait for result by listening to search/response
   queue.child('response/'+reqRef.key).on('value', function fn(snap){
     console.log("got a response");
-    //SNAP is the json format being returned
+    //SNAP is the json format of results being returned
     console.log(snap);
     if(snap.val() !== null){        // wait for data
       console.log("snap has a value");
@@ -53,13 +54,8 @@ function defaultCallback(data) {
   }
 }
 
-// var querySearch = {
-//   global.typed_query: "Restaurant"
-// }
 
-console.log("GLOBAL: ", global.typed_query);
-
-// test
+// Query that is being read: Note it is a fixed value "Restaurant"
 function dotest() {
   query = "Restaurant";
   console.log("in Do test:", query);

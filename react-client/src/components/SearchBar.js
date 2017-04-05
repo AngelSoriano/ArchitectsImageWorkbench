@@ -3,7 +3,6 @@
  */
 import React, {Component} from 'react';
 import '../styles/App.css';
-// import '../../../utility/flashlighClient';
 
 class SearchBar extends Component {
     constructor(props) {
@@ -22,7 +21,7 @@ class SearchBar extends Component {
         alert('A name was submitted: ' + this.state.value);
         event.preventDefault();
         this.props.doSearch(true)
-
+        //What I want is for this.state.value to be
 
     }
 
@@ -40,7 +39,6 @@ class SearchBar extends Component {
                 </div>
 
             </form>
-
         );
     }
 }
