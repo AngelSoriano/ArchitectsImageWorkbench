@@ -14,6 +14,7 @@ class App extends Component {
             <div className="App">
                 <Router history={browserHistory}>
                     <Route path="/" component={Container}>
+
                         <IndexRoute component={Home} loadResults={this.loadResults} />
                         <Route path="/Link1" component={Link1}/>
                         <Route path="/Link2" component={Link2}/>
@@ -42,6 +43,5 @@ class App extends Component {
 
 }
 
-
-
 export default App;
+
