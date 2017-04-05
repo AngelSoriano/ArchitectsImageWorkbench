@@ -9,7 +9,9 @@ var index = require('./routes/index');
 var images = require('./routes/images');
 var tags = require('./routes/retrieveTags');
 var admin = require("firebase-admin");
-var search = require("./utility/flashlightSearch");
+var searchQueue = require("./utility/flashlightSearchQueue");
+
+
 var app = express();
 
 // firebase-admin setup
@@ -32,6 +34,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Handles all routes so you do not get a not found error
+app.get('*', function (request, response){
+    response.sendFile(path.resolve(__dirname, 'public', 'index.html'))
+})
+
 
 app.use('/', index);
 app.use('/images', images);

@@ -4,6 +4,7 @@
 
 import React, { Component } from 'react';
 import { Navbar, Nav, NavItem, MenuItem, NavDropdown } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap'
 import UserIcon from './UserIcon';
 import '../styles/App.css';
 
@@ -14,12 +15,18 @@ class NavigationBar extends Component {
                 <Navbar>
                     <Navbar.Header>
                         <Navbar.Brand>
-                            <a href="#">Architects Image Workbench</a>
+                            <LinkContainer to="/">
+                                <a>Architects Image Workbench</a>
+                            </LinkContainer>
                         </Navbar.Brand>
                     </Navbar.Header>
                     <Nav>
-                        <NavItem eventKey={1} href="#">Link</NavItem>
-                        <NavItem eventKey={2} href="#">Link</NavItem>
+                        <LinkContainer to="/Link1">
+                            <NavItem eventKey={1}>Link</NavItem>
+                        </LinkContainer>
+                        <LinkContainer to="/Link2">
+                            <NavItem eventKey={2}>Link</NavItem>
+                        </LinkContainer>
                         <NavDropdown className="userMenu" eventKey={3} title={<UserIcon/>} id="basic-nav-dropdown" pullRight>
                             <MenuItem eventKey={3.1}>Action</MenuItem>
                             <MenuItem eventKey={3.2}>Another action</MenuItem>
@@ -34,6 +41,5 @@ class NavigationBar extends Component {
         )
     }
 }
-
 export default NavigationBar
 

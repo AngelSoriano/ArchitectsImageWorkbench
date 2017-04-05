@@ -10,9 +10,10 @@
 
 var elasticsearch = require('elasticsearch'),
   conf = require('./flashlightConfig'),
-  fbutil = require('../utility/firebaseLoader'),
+  fbutil = require('./firebaseLoader'),
   PathMonitor = require('../flashlight/lib/PathMonitor'),
-  SearchQueue = require('../flashlight/lib/SearchQueue');
+  SearchQueue = require('../flashlight/lib/SearchQueue'),
+  client = require('./flashlighClient');
 
 var escOptions = {
   hosts: [{
@@ -47,4 +48,8 @@ function initFlashlight() {
   fbutil.init();
   PathMonitor.process(esc, conf.paths, conf.FB_PATH);
   SearchQueue.init(esc, conf.FB_REQ, conf.FB_RES, conf.CLEANUP_INTERVAL);
+  console.log('------- Done Loading --------');
+  console.log('Performing search test');
+  client.test();
+  console.log('------- test done --------');
 }

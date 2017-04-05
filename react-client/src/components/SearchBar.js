@@ -2,10 +2,10 @@
  * Created by Scott Ligon on 2/18/17.
  */
 import React, {Component} from 'react';
-import {FormGroup,FormControl,ControlLabel,HelpBlock,Button} from 'react-bootstrap';
 import '../styles/App.css';
 
 class SearchBar extends Component {
+
   constructor(props) {
     super(props);
     this.state = {value: ''};
@@ -21,7 +21,7 @@ class SearchBar extends Component {
   handleSubmit(event) {
     alert('A name was submitted: ' + this.state.value);
     event.preventDefault();
-    this.props.doSearch(true)
+    this.props.doSearch()
   }
 
   render() {
