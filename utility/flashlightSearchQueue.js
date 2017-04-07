@@ -7,23 +7,27 @@
 
 var firebase = require ('firebase-admin');
 var ElasticClient = require ('elasticsearchclient');
-conf = require('./flashlightConfig');
-
+var conf = require('./flashlightConfig');
 
 // initialize our ElasticSearch API
 var client = new ElasticClient({ host: 'search-architect-images-6uxxalaigajwi7jnixorioabfa.us-west-1.es.amazonaws.com', port: 80 });
 
-// listen for requests at https://<INSTANCE>.firebaseio.com/search/request
+// Creating a reference to our firebase
+// We use firebase as an intermediate to store or requests and responses.
 var config = {
   databaseURL: conf.FB_URL,
   credential: firebase.credential.cert(conf.FB_SERVICEACCOUNT)
 };
+
 firebase = firebase.initializeApp(config, "queue");
 var database = firebase.database();
-var queue = database.ref('architects-image-workbench');
-//var queue = new Firebase('https://architects-image-workbench.firebaseio.com/search');
+var queue = database.ref('search');
+
+
+// Listening on 'search/request' for a new request/child to be added
 queue.child('request').on('child_added', processRequest);
 
+// function called when a new request is made
 function processRequest(snap) {
     snap.ref.off(); // clear the request after we receive it
     var dat = snap.val();
