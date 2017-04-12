@@ -63,13 +63,12 @@ else {
  * location you specified in the FB_PATHS variable. Be sure to restrict that data in your Security Rules.
  ****************************************************/
 exports.paths = [
-    console.log("DATA:",function(data){return data;}),
   {
     path : "Labels",
     index: "firebase",
     type : "labels",
       // filter: "lowercase",
-      parser: function(data) { data = data.toString().toLowerCase(); return data; },
+      // parser: function(data) { data = data.toString().toLowerCase(); return data; },
   },
   {
     path : "Images",
