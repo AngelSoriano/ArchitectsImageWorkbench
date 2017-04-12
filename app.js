@@ -10,6 +10,8 @@ var images = require('./routes/images');
 var tags = require('./routes/retrieveTags');
 var admin = require("firebase-admin");
 var searchQueue = require("./utility/flashlightSearchQueue");
+var elasticsearch = require('elasticsearch');
+
 
 
 var app = express();

@@ -33,10 +33,10 @@ if( process.env.BONSAI_URL ) {
 }
 else {
   // ElasticSearch server's host URL
-  exports.ES_HOST  = process.env.ES_HOST || 'search-architect-images-6uxxalaigajwi7jnixorioabfa.us-west-1.es.amazonaws.com';
+  exports.ES_HOST  = process.env.ES_HOST || 'localhost';
 
   // ElasticSearch server's host port
-  exports.ES_PORT  = process.env.ES_PORT || 80;
+  exports.ES_PORT  = process.env.ES_PORT || 9200;
 
   // ElasticSearch username for http auth
   exports.ES_USER  = process.env.ES_USER || null;
@@ -63,15 +63,24 @@ else {
  * location you specified in the FB_PATHS variable. Be sure to restrict that data in your Security Rules.
  ****************************************************/
 exports.paths = [
+    console.log("DATA:",function(data){return data;}),
   {
     path : "Labels",
     index: "firebase",
     type : "labels",
+      // filter: "lowercase",
+      parser: function(data) { data = data.toString().toLowerCase(); return data; },
   },
   {
     path : "Images",
     index: "firebase",
-    type: "images"
+    type: "images",
+      // filter: "lowercase",
+      // fields: ['Labels', 'title'],
+      // filter: function(data) { return data.name !== 'system'; },
+
+      // refBuilder: function(ref, path) { return ref.orderBy(path.sortField).startAt(Date.now());}
+
   }
   /*
    {
@@ -94,6 +103,8 @@ exports.paths = [
 exports.ES_OPTS = {
   //requestTimeout: 60000, maxSockets: 100, log: 'error'
 };
+
+
 
 /** Config Options
  ***************************************************/

@@ -10,7 +10,7 @@ var ElasticClient = require ('elasticsearchclient');
 var conf = require('./flashlightConfig');
 
 // initialize our ElasticSearch API
-var client = new ElasticClient({ host: 'search-architect-images-6uxxalaigajwi7jnixorioabfa.us-west-1.es.amazonaws.com', port: 80 });
+var client = new ElasticClient({ host: 'localhost', port: 9200 });
 
 // Creating a reference to our firebase
 // We use firebase as an intermediate to store or requests and responses.
