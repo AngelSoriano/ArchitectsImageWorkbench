@@ -15,7 +15,7 @@ class App extends Component {
                 <Router history={browserHistory}>
                     <Route path="/" component={Container}>
 
-                        <IndexRoute component={Home} loadResults={this.loadResults} />
+                        <IndexRoute component={Home} loadResults={this.loadResults} searchResults={this.searchResults} />
                         <Route path="/Link1" component={Link1}/>
                         <Route path="/Link2" component={Link2}/>
                         <Route path="/results" component={ResultsComponent}/>
@@ -31,7 +31,8 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            loadResults: false
+            loadResults: false,
+            searchResults: ''
         }
 
         this.loadResults = this.loadResults.bind(this)
@@ -39,6 +40,10 @@ class App extends Component {
 
     loadResults() {
         this.setState({loadResults: true})
+    }
+
+    searchResults(searchResults) {
+        this.setState({searchResults: searchResults})
     }
 
 }

@@ -3,44 +3,48 @@
  */
 import React, {Component} from 'react';
 import '../styles/App.css';
+import ImageService from '../service/ImageService'
 
 class SearchBar extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {value: ''};
+    constructor(props) {
+        super(props);
+        this.state = {value: ''};
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
+    handleChange(event) {
+        this.setState({value: event.target.value});
+    }
 
-  handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value);
-    event.preventDefault();
-    this.props.doSearch()
-  }
+    handleSubmit(event) {
+        alert('A name was submitted: ' + this.state.value);
+        event.preventDefault();
+        ImageService.search(this.state.value, (searchResults) => {
+            console.log(searchResults)
+        })
+        // this.props.doSearch()
+    }
 
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          
-        </label>
+    render() {
+        return (
+            <form onSubmit={this.handleSubmit}>
+                <label>
 
-       {/*<input type="submit" class="btn btn-default" value="Search"/>*/}
-        <div className="inner-addon right-addon">
-            <i className="glyphicon glyphicon-search"></i>
-            <input type="text" className="form-control" value={this.state.value} onChange={this.handleChange} />
-        </div>
-       
-      </form>
-      
-    );
-  }
+                </label>
+
+                {/*<input type="submit" class="btn btn-default" value="Search"/>*/}
+                <div className="inner-addon right-addon">
+                    <i className="glyphicon glyphicon-search"></i>
+                    <input type="text" className="form-control" value={this.state.value} onChange={this.handleChange}/>
+                </div>
+
+            </form>
+
+        );
+    }
 }
 
 export default SearchBar

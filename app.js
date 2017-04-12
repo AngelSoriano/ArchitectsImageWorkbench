@@ -37,10 +37,10 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Handles all routes so you do not get a not found error
-app.get('*', function (request, response){
-    response.sendFile(path.resolve(__dirname, 'public', 'index.html'))
-})
+// // Handles all routes so you do not get a not found error
+// app.get('*', function (request, response){
+//     response.sendFile(path.resolve(__dirname, 'public', 'index.html'))
+// })
 
 
 app.use('/', index);

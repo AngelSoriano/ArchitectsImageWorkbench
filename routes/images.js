@@ -4,7 +4,7 @@ var AWS = require('aws-sdk');
 var multer = require('multer');
 var uuid = require('node-uuid');
 var admin = require('firebase-admin');
-var ImageUtility;
+var flashlightClient = require('../utility/flashlighClient')
 
 /**
  * AWS config
@@ -45,11 +45,11 @@ const upload = multer({
 });
 
 /**
- *  /images/upload
+ *  /images/s3/upload
  *  Uploads the image file to Amazon S3
  *
  */
-router.post('/upload/s3', upload.single('imageFile'), (req, res) => {
+router.post('/s3/upload', upload.single('imageFile'), (req, res) => {
     var imageKey = uuid.v4()
     s3.putObject({
         Bucket: 'aiw-bucket',
@@ -96,11 +96,11 @@ router.get('/detect', (req, res, next) => {
 });
 
 /**
- * /images/store
+ * /images/fb/store
  * Stores meta info for uploaded image to Firebase database
  *
  */
-router.get('/store/fb', (req, res, next) => {
+router.get('/fb/store', (req, res, next) => {
     // Grab values passed from client
     const imageId = req.query.imageKey
     const imageTitle = req.query.title
@@ -131,8 +131,14 @@ router.get('/store/fb', (req, res, next) => {
     }
 });
 
-router.get('/delete/s3', (req, res, next) => {
+/**
+ * /images/s3/delete
+ * Stores meta info for uploaded image to Firebase database
+ *
+ */
+router.get('/s3/delete', (req, res, next) => {
     const imageId = req.query.imageKey
+
     s3.deleteObject({
         Bucket: "aiw-bucket",
         Key: imageId
@@ -144,5 +150,39 @@ router.get('/delete/s3', (req, res, next) => {
         res.send(data)
     })
 })
+
+/**
+ * /images/search/
+ * Search database for results
+ *
+ */
+router.get('/search', (req, res, next = defaultNext()) => {
+    const searchTerm = req.query.searchTerm
+    var imageResults = []
+    flashlightClient.search("firebase", "label", searchTerm, function(data) {
+        if(data === "") {
+            console.log("NO DATA")
+        } else {
+            console.log(data)
+            res.write(data, function(err) {
+                res.end();
+            })
+
+
+        }
+
+    })
+    console.log("CALIFORNIA")
+
+
+})
+
+function defaultNext(imageResults, res) {
+    console.log(imageResults)
+    console.log("DEFAULT NEXT")
+
+}
+
+
 
 module.exports = router;

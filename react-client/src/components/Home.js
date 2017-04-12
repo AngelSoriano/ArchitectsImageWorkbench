@@ -16,8 +16,10 @@ class Home extends Component {
                         <h1>Gain insight for your next creative design</h1>
                     </div>
                     <div className="SearchBar">
-                        <SearchBar doSearch={this.doSearch}/>
+                        <SearchBar doSearch={this.doSearch} searchResults={this.searchResults}/>
                         { this.state.doSearch ? this.props.route.loadResults() : null }
+
+
                     </div>
                 </div>
                 <UploadComponent/>
@@ -33,14 +35,21 @@ class Home extends Component {
         super(props);
         this.state = {
             doSearch: false,
-            loadResults: false
+            loadResults: false,
+            searchResults: null
         }
 
         this.doSearch = this.doSearch.bind(this)
+        this.searchResults = this.searchResults.bind(this)
+
     }
 
     doSearch() {
         this.setState({doSearch: true})
+    }
+
+    searchResults(searchResults) {
+        this.setState({searchResults: searchResults})
     }
 
 
