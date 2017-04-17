@@ -48,8 +48,4 @@ function initFlashlight() {
   fbutil.init();
   PathMonitor.process(esc, conf.paths, conf.FB_PATH);
   SearchQueue.init(esc, conf.FB_REQ, conf.FB_RES, conf.CLEANUP_INTERVAL);
-  console.log('------- Done Loading --------');
-  console.log('Performing search test');
-  client.test();
-  console.log('------- test done --------');
 }

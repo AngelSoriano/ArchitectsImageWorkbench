@@ -3,15 +3,17 @@
  */
 
 import React, { Component } from 'react';
-import { Navbar, Nav, NavItem, MenuItem, NavDropdown } from 'react-bootstrap';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap'
-import UserIcon from './UserIcon';
 import '../styles/App.css';
+import UploadComponent from './UploadComponent'
 
 class NavigationBar extends Component {
     render() {
         return (
             <div className="NavigationBar">
+                <UploadComponent/>
+
                 <Navbar>
                     <Navbar.Header>
                         <Navbar.Brand>
@@ -21,22 +23,17 @@ class NavigationBar extends Component {
                         </Navbar.Brand>
                     </Navbar.Header>
                     <Nav>
-                        <LinkContainer to="/Link1">
-                            <NavItem eventKey={1}>Link</NavItem>
+                        <LinkContainer to="/about">
+                            <NavItem eventKey={1}>About</NavItem>
                         </LinkContainer>
-                        <LinkContainer to="/Link2">
-                            <NavItem eventKey={2}>Link</NavItem>
+                        <LinkContainer to="/panafold">
+                            <NavItem eventKey={2}>Panafold</NavItem>
                         </LinkContainer>
-                        <NavDropdown className="userMenu" eventKey={3} title={<UserIcon/>} id="basic-nav-dropdown" pullRight>
-                            <MenuItem eventKey={3.1}>Action</MenuItem>
-                            <MenuItem eventKey={3.2}>Another action</MenuItem>
-                            <MenuItem eventKey={3.3}>Something else here</MenuItem>
-                            <MenuItem divider/>
-                            <MenuItem eventKey={3.3}>Separated link</MenuItem>
-                        </NavDropdown>
-                        
+
                     </Nav>
+
                 </Navbar>
+
             </div>
         )
     }

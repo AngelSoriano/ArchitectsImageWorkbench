@@ -4,7 +4,6 @@
 
 import React, {Component} from 'react';
 import ImageGallery from './ImageGallery'
-import UploadComponent from './UploadComponent'
 import SearchBar from './SearchBar'
 
 class Home extends Component {
@@ -16,34 +15,37 @@ class Home extends Component {
                         <h1>Gain insight for your next creative design</h1>
                     </div>
                     <div className="SearchBar">
-                        <SearchBar doSearch={this.doSearch}/>
-                        { this.state.doSearch ? this.props.route.loadResults() : null }
+                        <SearchBar searchResults={this.searchResults}/>
                     </div>
                 </div>
-                <UploadComponent/>
-                <ImageGallery/>
+                <ImageGallery searchResults={this.state.imageIdsAndConfidenceLevels}/>
+
             </div>
-
-
 
         );
     }
 
     constructor(props) {
         super(props);
+
+        // TODO: Get most popular images based on clicks (hard-coded with image IDs for now)
+        var imageIdsAndConfidenceLevels = {
+            "b7d0a852-6d46-4d90-9a6e-80a3d37cf501": 1,
+            "87c9b2d8-0939-44aa-9bdc-6e2558d6417f": 1,
+            "18e76dea-c688-4c12-b2a5-166f88b1661d": 1
+        };
+        imageIdsAndConfidenceLevels = JSON.stringify(imageIdsAndConfidenceLevels);
+
         this.state = {
-            doSearch: false,
-            loadResults: false
+            imageIdsAndConfidenceLevels: imageIdsAndConfidenceLevels
         }
 
-        this.doSearch = this.doSearch.bind(this)
+        this.searchResults = this.searchResults.bind(this)
     }
 
-    doSearch() {
-        this.setState({doSearch: true})
+    searchResults(searchResults) {
+        this.props.route.searchResults(searchResults)
     }
-
-
 }
 
 export default Home;
