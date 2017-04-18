@@ -156,33 +156,17 @@ router.get('/s3/delete', (req, res, next) => {
  * Search database for results
  *
  */
-router.get('/search', (req, res, next = defaultNext()) => {
-    const searchTerm = req.query.searchTerm
-    var imageResults = []
+router.get('/search', (req, res) => {
+    const searchTerm = req.query.searchTerm;
+
     flashlightClient.search("firebase", "label", searchTerm, function(data) {
         if(data === "") {
-            console.log("NO DATA")
         } else {
-            console.log(data)
-            res.write(data, function(err) {
-                res.end();
-            })
-
-
+            res.send(data)
         }
-
     })
-    console.log("CALIFORNIA")
 
-
-})
-
-function defaultNext(imageResults, res) {
-    console.log(imageResults)
-    console.log("DEFAULT NEXT")
-
-}
-
+});
 
 
 module.exports = router;

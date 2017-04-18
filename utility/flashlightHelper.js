@@ -1,26 +1,21 @@
 /**
- * (Temporary solution)
- *
- * Created by naelin on 4/7/17.
+ * Created by naelin on 4/17/17.
  */
 
-function getImageIdsAndConfidenceLevel(jsonObj) {
-    var imageResults = []
+function getImageIdsAndConfidenceLevels(jsonObj) {
+    var imageResults = {}
     for (var key in jsonObj) {
         if (jsonObj.hasOwnProperty(key)) {
-            console.log("key: " + "val:" + jsonObj[key])
-            if(key == "hits") {
-                if(jsonObj[key].total != 0) {
+            if (key == "hits") {
+                if (jsonObj[key].total != 0) {
                     var json = jsonObj[key].hits;
                     for (var key in json) {
                         if (json.hasOwnProperty(key)) {
-
-                            if(json[key]._source.Images == undefined) {
-                                console.log("empty")
+                            if (json[key]._source.Images == undefined) {
                             } else {
-                                imageArray = json[key]._source.Images
+                                var imageArray = json[key]._source.Images
 
-                                for(var key in imageArray) {
+                                for (var key in imageArray) {
                                     imageResults[key] = imageArray[key]
                                 }
                             }
@@ -32,10 +27,11 @@ function getImageIdsAndConfidenceLevel(jsonObj) {
             }
 
         }
+
     }
+    return imageResults
 }
 
 module.exports = {
-    getImageIdsAndConfidenceLevel: getImageIdsAndConfidenceLevel
+    getImageIdsAndConfidenceLevels: getImageIdsAndConfidenceLevels
 };
-
