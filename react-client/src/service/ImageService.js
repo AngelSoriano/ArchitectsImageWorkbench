@@ -88,12 +88,13 @@ function search(searchTerm, callback) {
     request.get('images/search').query({searchTerm: searchTerm}).end((err, res) => {
         if(err) {
             console.log(err + res);
+            console.log("ERROR!@#")
         }
         else {
-            console.log("THING")
-            console.log(res)
+            callback(res.text)
         }
     })
+
 }
 
 const ImageService = {upload, detectLabels, storeImageMeta, deleteImage, search};

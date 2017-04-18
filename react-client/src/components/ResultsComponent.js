@@ -4,21 +4,19 @@
 
 import React, {Component} from 'react'
 import SortDropdownButton from './SortDropdownButton'
-import RecommendedTags from './RecommendedTags'
 import ImageGallery from './ImageGallery'
-import PageNavigation from './PageNavigation'
+import SearchBar from './SearchBar'
 
 class ResultsComponent extends Component {
     render() {
         return (
             <div className="ResultsComponent">
-                <SortDropdownButton setSortType={this.setSortType}/>
-
-                <RecommendedTags/>
-
-                <ImageGallery/>
-
-                <PageNavigation/>
+                <div className="MenuContainer">
+                    <SearchBar/>
+                    <SortDropdownButton setSortType={this.setSortType}/>
+                </div>
+                {/*<RecommendedTags/>*/}
+                <ImageGallery searchResults={this.props.searchResults}/>
             </div>
         )
     }
