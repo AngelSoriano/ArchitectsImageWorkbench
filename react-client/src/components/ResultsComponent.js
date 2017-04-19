@@ -6,6 +6,7 @@ import React, {Component} from 'react'
 import SortDropdownButton from './SortDropdownButton'
 import ImageGallery from './ImageGallery'
 import SearchBar from './SearchBar'
+import RecommendedTags from './RecommendedTags'
 
 class ResultsComponent extends Component {
     render() {
@@ -15,7 +16,7 @@ class ResultsComponent extends Component {
                     <SearchBar/>
                     <SortDropdownButton setSortType={this.setSortType}/>
                 </div>
-                {/*<RecommendedTags/>*/}
+                <RecommendedTags imageList={this.props.searchResults}/>
                 <ImageGallery searchResults={this.props.searchResults}/>
             </div>
         )

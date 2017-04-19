@@ -64,14 +64,14 @@ else {
  ****************************************************/
 exports.paths = [
   {
-    path : "Labels",
+    path : "labels",
     index: "firebase",
     type : "labels",
       // filter: "lowercase",
       // parser: function(data) { data = data.toString().toLowerCase(); return data; },
   },
   {
-    path : "Images",
+    path : "images",
     index: "firebase",
     type: "images",
       // filter: "lowercase",

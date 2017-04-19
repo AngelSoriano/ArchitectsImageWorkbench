@@ -6,7 +6,7 @@ var express = require('express');
 var router = express.Router();
 
 
-router.get('/', (req, res) => {
+router.get('/retrieve', (req, res) => {
     var out = [];
     // Query database and return the tags
 

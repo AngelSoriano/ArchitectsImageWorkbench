@@ -11,9 +11,9 @@ function getImageIdsAndConfidenceLevels(jsonObj) {
                     var json = jsonObj[key].hits;
                     for (var key in json) {
                         if (json.hasOwnProperty(key)) {
-                            if (json[key]._source.Images == undefined) {
+                            if (json[key]._source.images == undefined) {
                             } else {
-                                var imageArray = json[key]._source.Images
+                                var imageArray = json[key]._source.images
 
                                 for (var key in imageArray) {
                                     imageResults[key] = imageArray[key]
