@@ -17,6 +17,7 @@ AWS.config.update(
         region: 'us-west-2',
     });
 const rekognition = new AWS.Rekognition();
+
 /**
  * Firebase config
  */
@@ -34,6 +35,7 @@ admin.initializeApp({
 const db = admin.database();
 const imagesRef = db.ref('/images');
 const labelsRef = db.ref('/labels');
+
 /**
  * Multer config
  * Memory storage keeps file data in buffer
@@ -73,7 +75,6 @@ router.post('/s3/upload', upload.single('imageFile'), (req, res) => {
  */
 router.get('/detect', (req, res, next) => {
 
-    console.log(req.query.imageKey)
     var params = {
         Image: {
             S3Object: {
@@ -161,9 +162,7 @@ router.get('/search', (req, res) => {
 
     flashlightClient.search("firebase", "label", searchTerm, function(data) {
         if(data === "") {
-            console.log("images.js error")
         } else {
-            console.log("RIGHt HERE")
             res.send(data)
         }
     })
