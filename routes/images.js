@@ -158,13 +158,13 @@ router.get('/s3/delete', (req, res, next) => {
  */
 router.get('/search', (req, res) => {
     const searchTerm = req.query.searchTerm;
-
-    flashlightClient.search("firebase", "label", searchTerm, function(data) {
-        if(data === "") {
-        } else {
-            res.send(data)
-        }
-    })
+    flashlightClient.search("firebase", "label", searchTerm.toLowerCase());
+    // flashlightClient.search("firebase", "label", searchTerm.toLowerCase(), function(data) {
+    //     if(data === "") {
+    //     } else {
+    //         res.send(data)
+    //     }
+    // })
 
 });
 

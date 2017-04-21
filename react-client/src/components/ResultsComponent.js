@@ -12,7 +12,9 @@ class ResultsComponent extends Component {
         return (
             <div className="ResultsComponent">
                 <div className="MenuContainer">
-                    <SearchBar/>
+                    <div className="SearchBar">
+                        <SearchBar searchResults={this.searchResults}/>
+                    </div>
                     <SortDropdownButton setSortType={this.setSortType}/>
                 </div>
                 {/*<RecommendedTags/>*/}
