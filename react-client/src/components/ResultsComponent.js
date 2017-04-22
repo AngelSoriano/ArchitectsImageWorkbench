@@ -6,18 +6,25 @@ import React, {Component} from 'react'
 import SortDropdownButton from './SortDropdownButton'
 import ImageGallery from './ImageGallery'
 import SearchBar from './SearchBar'
+import RecommendedTags from './RecommendedTags'
 
 class ResultsComponent extends Component {
     render() {
         return (
             <div className="ResultsComponent">
                 <div className="MenuContainer">
-                    <div className="SearchBar">
+                    <div id="inline">
                         <SearchBar searchResults={this.searchResults}/>
                     </div>
-                    <SortDropdownButton setSortType={this.setSortType}/>
+                    <div id="Sorting">
+                        <SortDropdownButton setSortType={this.setSortType}/>
+                    </div>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <RecommendedTags imageList={this.props.searchResults}/>
                 </div>
-                {/*<RecommendedTags/>*/}
+
                 <ImageGallery searchResults={this.props.searchResults}/>
             </div>
         )

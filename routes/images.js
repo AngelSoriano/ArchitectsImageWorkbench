@@ -32,8 +32,8 @@ admin.initializeApp({
  * Firebase reference
  */
 const db = admin.database();
-const imagesRef = db.ref('/Images');
-const labelsRef = db.ref('/Labels');
+const imagesRef = db.ref('/images');
+const labelsRef = db.ref('/labels');
 /**
  * Multer config
  * Memory storage keeps file data in buffer
@@ -110,8 +110,8 @@ router.get('/fb/store', (req, res, next) => {
     // Upload title and description, given the imageId generated from S3, to Firebase
     // https://architects-image-workbench.firebaseio.com/images/{imageId}
     imagesRef.child(imageId).set({
-        Title: imageTitle,
-        Description: imageDescription,
+        title: imageTitle,
+        description: imageDescription,
     }, (err) => {
         if (err) {
             console.log(err)
@@ -122,12 +122,12 @@ router.get('/fb/store', (req, res, next) => {
 
     // Add the labels given the same imageId
     // https://architects-image-workbench.firebaseio.com/images/{imageId}/labels
-    const imageLabelsJson = JSON.parse(imageLabels)["Labels"]
+    const imageLabelsJson = JSON.parse(imageLabels)["labels"]
     for (var i = 0; i < imageLabelsJson.length; i++) {
         var obj = imageLabelsJson[i];
 
-        imagesRef.child(imageId + "/Labels/" + obj.Name).set(obj.Confidence);
-        labelsRef.child(obj.Name + "/Images/" + imageId).set(obj.Confidence);
+        imagesRef.child(imageId + "/labels/" + obj.Name).set(obj.Confidence);
+        labelsRef.child(obj.Name + "/images/" + imageId).set(obj.Confidence);
     }
 });
 
@@ -158,13 +158,17 @@ router.get('/s3/delete', (req, res, next) => {
  */
 router.get('/search', (req, res) => {
     const searchTerm = req.query.searchTerm;
-    flashlightClient.search("firebase", "label", searchTerm.toLowerCase());
-    // flashlightClient.search("firebase", "label", searchTerm.toLowerCase(), function(data) {
-    //     if(data === "") {
-    //     } else {
-    //         res.send(data)
-    //     }
-    // })
+
+
+    flashlightClient.search("firebase", "label", searchTerm, function(data) {
+        if(data === "") {
+            console.log("images.js error")
+        } else {
+            console.log("RIGHt HERE")
+            res.send(data)
+        }
+    })
+
 
 });
 

@@ -3,6 +3,7 @@
  */
 import React, {Component} from 'react';
 import {DropdownButton, MenuItem} from 'react-bootstrap';
+import '../styles/App.css';
 
 class SortDropdownButton extends Component {
 
