@@ -18,7 +18,7 @@ class UploadDetailsForm extends Component {
                         <FormControl
                             type="text"
                             value={this.state.titleValue}
-                            placeholder="(Title)"
+                            placeholder="Enter a title"
                             onChange={this.handleTitleChange}
                         />
                         <FormControl.Feedback />
@@ -29,7 +29,7 @@ class UploadDetailsForm extends Component {
                         <FormControl
                             componentClass="textarea"
                             value={this.state.descriptionValue}
-                            placeholder="(Description)"
+                            placeholder="Say something about this image"
                             onChange={this.handleDescriptionChange}
                         />
                     </FormGroup>

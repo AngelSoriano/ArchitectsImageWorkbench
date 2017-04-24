@@ -9,9 +9,9 @@ class UploadDropzone extends Component {
 
     render() {
         return (
-            <div className="UploadDropzone">
+            <div className="UploadDropzoneContainer">
 
-                <Dropzone
+                <Dropzone className="UploadDropzone"
                     multiple={false}
                     accept="image/*"
                     onDrop={this.onImageDrop}>
@@ -21,15 +21,17 @@ class UploadDropzone extends Component {
                 {/*<input className="fileInput"*/}
                 {/*type="file"*/}
                 {/*onChange={(e) => this.handleChange(e)}/>*/}
-
+                <br/>
                 <div>
                     {
                         this.state.uploadedImage === null ? null :
                             <div>
-                                <p>{this.state.uploadedImage.name}</p>
                                 <Image src={this.getImagePreview()} responsive/>
+                                <br/>
+
                             </div>
                     }
+
                 </div>
 
             </div>

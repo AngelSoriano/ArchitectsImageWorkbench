@@ -91,7 +91,6 @@ router.get('/detect', (req, res, next) => {
             console.log(err);
             return res.status(err.statusCode).send(err)
         }
-        console.log(data);
         res.send(data)
     });
 });
@@ -101,12 +100,12 @@ router.get('/detect', (req, res, next) => {
  * Stores meta info for uploaded image to Firebase database
  *
  */
-router.get('/fb/store', (req, res, next) => {
+router.get('/fb/store', (req, res) => {
     // Grab values passed from client
     const imageId = req.query.imageKey
     const imageTitle = req.query.title
     const imageDescription = req.query.description
-    const imageLabels = req.query.labels
+    var imageLabels = req.query.labels
 
     // Upload title and description, given the imageId generated from S3, to Firebase
     // https://architects-image-workbench.firebaseio.com/images/{imageId}
@@ -121,14 +120,25 @@ router.get('/fb/store', (req, res, next) => {
         }
     });
 
+
     // Add the labels given the same imageId
     // https://architects-image-workbench.firebaseio.com/images/{imageId}/labels
-    const imageLabelsJson = JSON.parse(imageLabels)["labels"]
-    for (var i = 0; i < imageLabelsJson.length; i++) {
-        var obj = imageLabelsJson[i];
+    try {
+        imageLabels = imageLabels.toString().toLowerCase()
+        const imageLabelsJson = JSON.parse(imageLabels)["labels"]
 
-        imagesRef.child(imageId + "/labels/" + obj.Name).set(obj.Confidence);
-        labelsRef.child(obj.Name + "/images/" + imageId).set(obj.Confidence);
+        for (var i = 0; i < imageLabelsJson.length; i++) {
+            var obj = imageLabelsJson[i];
+
+            imagesRef.child(imageId + "/labels/" + obj.name).set(obj.confidence);
+            labelsRef.child(obj.name + "/images/" + imageId).set(obj.confidence);
+        }
+
+        res.send(200)
+        return
+
+    } catch (err) {
+        console.log("Error in images.js: " + err)
     }
 });
 
@@ -160,8 +170,8 @@ router.get('/s3/delete', (req, res, next) => {
 router.get('/search', (req, res) => {
     const searchTerm = req.query.searchTerm;
 
-    flashlightClient.search("firebase", "label", searchTerm, function(data) {
-        if(data === "") {
+    flashlightClient.search("firebase", "label", searchTerm, function (data) {
+        if (data === "") {
         } else {
             res.send(data)
         }

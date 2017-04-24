@@ -26,7 +26,8 @@ class ResultsComponent extends Component {
         super(props)
         this.state = {
             jsonImageResults: '',
-            sortType: 'relevance'
+            sortType: 'relevance',
+            searchResults: ''
         }
 
         this.setSortType = this.setSortType.bind(this)
@@ -35,6 +36,7 @@ class ResultsComponent extends Component {
     setSortType(sortType) {
         this.setState({sortType: sortType})
     }
+
 }
 
 export default ResultsComponent
