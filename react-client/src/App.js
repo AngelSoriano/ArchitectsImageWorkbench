@@ -19,7 +19,8 @@ class App extends Component {
                         <Route path="/about" component={About}/>
                         <Route path="/panafold" component={Panafold}/>
                         <Route path="/results"
-                               component={() => (<ResultsComponent searchResults={this.state.searchResults}/>)}/>
+                               component={() => (<ResultsComponent searchResults={this.state.searchResults}/>)}
+                        />
                     </Route>
                 </Router>
 

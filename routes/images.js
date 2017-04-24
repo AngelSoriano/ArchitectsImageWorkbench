@@ -170,12 +170,14 @@ router.get('/s3/delete', (req, res, next) => {
 router.get('/search', (req, res) => {
     const searchTerm = req.query.searchTerm;
 
-    flashlightClient.search("firebase", "label", searchTerm, function (data) {
-        if (data === "") {
+    flashlightClient.search("firebase", "label", searchTerm, function(data) {
+        if(data === "") {
+            console.log("images.js error")
         } else {
             res.send(data)
         }
     })
+
 
 });
 

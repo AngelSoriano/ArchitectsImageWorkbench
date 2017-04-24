@@ -32,7 +32,7 @@ function processRequest(snap) {
     snap.ref.off(); // clear the request after we receive it
     var dat = snap.val();
     // Query ElasticSearch
-
+console.log("LOWERCASE: ",dat.query);
     client.search('firebase', {
         //formatting query to be sent
             "query": {

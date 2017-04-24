@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Button, ButtonToolbar} from 'react-bootstrap';
-import TagService from '../service/TagService'
+import TagService from '../service/TagService';
 
 class RecommendedTags extends Component {
     render() {
@@ -17,7 +17,9 @@ class RecommendedTags extends Component {
         super(props);
 
         this.state = {
-            tags: ['architecture', 'building', 'modern', 'office', 'chair', 'indoors']
+
+            tags: ['architecture', 'building', 'modern', 'office', 'chair', 'indoors'],
+            imageIds: ''
         };
 
         this.getTagList = this.getTagList.bind(this);
@@ -41,6 +43,7 @@ class RecommendedTags extends Component {
         TagService.retrieve(this.getImageIds(), (tags) => {
             this.setState({tags: JSON.parse(tags)})
         })
+
     }
 
     renderTags() {

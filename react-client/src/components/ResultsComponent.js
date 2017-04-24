@@ -13,10 +13,18 @@ class ResultsComponent extends Component {
         return (
             <div className="ResultsComponent">
                 <div className="MenuContainer">
-                    <SearchBar/>
-                    <SortDropdownButton setSortType={this.setSortType}/>
+                    <div id="inline">
+                        <SearchBar searchResults={this.searchResults}/>
+                    </div>
+                    <div id="Sorting">
+                        <SortDropdownButton setSortType={this.setSortType}/>
+                    </div>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <RecommendedTags imageList={this.props.searchResults}/>
                 </div>
-                <RecommendedTags imageList={this.props.searchResults}/>
+
                 <ImageGallery searchResults={this.props.searchResults}/>
             </div>
         )
