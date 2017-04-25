@@ -22,9 +22,12 @@ class ResultsComponent extends Component {
                     <br/>
                     <br/>
                     <br/>
-                    <RecommendedTags imageList={this.props.searchResults}/>
+                    <div id ="Tags">
+                        <RecommendedTags imageList={this.props.searchResults}/>
+                    </div>
                 </div>
-
+                <br/>
+                <br/>
                 <ImageGallery searchResults={this.props.searchResults}/>
             </div>
         )
@@ -34,7 +37,8 @@ class ResultsComponent extends Component {
         super(props)
         this.state = {
             jsonImageResults: '',
-            sortType: 'relevance'
+            sortType: 'relevance',
+            searchResults: ''
         }
 
         this.setSortType = this.setSortType.bind(this)
@@ -43,6 +47,7 @@ class ResultsComponent extends Component {
     setSortType(sortType) {
         this.setState({sortType: sortType})
     }
+
 }
 
 export default ResultsComponent

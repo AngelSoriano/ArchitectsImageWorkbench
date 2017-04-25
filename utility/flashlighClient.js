@@ -50,7 +50,6 @@ function search(index, type, searchTerm, callback = defaultCallback) {
 
         // Parse the JSON snap value into key-value pairs consisting of image IDs and confidence levels
         var jsonObj = JSON.parse(snap.val())
-        console.log(snap.val())
         var imageResults = flashlightHelper.getImageIdsAndConfidenceLevels(jsonObj)
         callback(imageResults)
     }

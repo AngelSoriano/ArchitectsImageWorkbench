@@ -2,14 +2,12 @@ import React, {Component} from 'react'
 import {Button, ButtonToolbar} from 'react-bootstrap';
 import TagService from '../service/TagService';
 
-
 class RecommendedTags extends Component {
     render() {
         return (
             <div className="RecommendedTags">
-                <ButtonToolbar className="tagsBar">
+                <ButtonToolbar className="TagsBar">
                     {this.renderTags()}
-                    {this.getImageIds()}
                 </ButtonToolbar>
             </div>
         )
@@ -17,39 +15,42 @@ class RecommendedTags extends Component {
 
     constructor(props) {
         super(props);
+
         this.state = {
-            tags: ['victorian', 'building', 'architecture', 'office', 'chair', 'indoors', 'test', 'test1', 'test2', 'test3','test4','test5','test6','test7'],
+
+            tags: ['architecture', 'building', 'modern', 'office', 'chair', 'indoors'],
             imageIds: ''
         };
 
-
         this.getTagList = this.getTagList.bind(this);
         this.getImageIds = this.getImageIds.bind(this);
+        this.getTagList()
     }
 
     getImageIds() {
-        // console.log("HERE")
-        // console.log("HERE" + this.props.searchResults)
-        // var imageIdsAndConfidenceLevels = JSON.parse(this.props.searchResults)
-        //
-        // var imageIds = [];
-        // for(var imageId in imageIdsAndConfidenceLevels) {
-        //     imageIds.push(imageId)
-        // }
-        //
-        // console.log(imageIds)
-        // this.setState({imageIds: imageIds});
+        var imageIdsAndConfidenceLevels = JSON.parse(this.props.imageList)
+
+        var imageIds = [];
+        for (var imageId in imageIdsAndConfidenceLevels) {
+            imageIds.push(imageId)
+        }
+
+        console.log(imageIds)
+        return imageIds
     }
 
     getTagList() {
-        TagService.retrieve();
+        TagService.retrieve(this.getImageIds(), (tags) => {
+            this.setState({tags: JSON.parse(tags)})
+        })
+
     }
 
     renderTags() {
         return this.state.tags.map(name => (
-            <Button
-                key={name}
-                name={name}
+            <Button className="TagsBarItem"
+                    key={name}
+                    name={name}
             >{name}</Button>
         ))
     }

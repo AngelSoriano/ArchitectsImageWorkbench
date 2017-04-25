@@ -19,10 +19,11 @@ class UploadModal extends Component {
                     </Modal.Header>
 
                     <Modal.Body>
-                        {/*Drag and drop image upload component*/}
-                        <UploadDropzone onImageDrop={this.onImageDrop }/>
+
+                        <UploadDropzone className="UploadDropzone" onImageDrop={this.onImageDrop }/>
                         {/*The upload input form*/}
-                        <UploadDetailsForm setValidationState={this.setValidationState} setImageMeta={this.setImageMeta}/>
+                        <UploadDetailsForm setValidationState={this.setValidationState}
+                                           setImageMeta={this.setImageMeta}/>
                     </Modal.Body>
 
                     <Modal.Footer>
@@ -62,11 +63,19 @@ class UploadModal extends Component {
 
     handleImageUpload(file) {
         ImageService.upload(file, (imageKey) => {
-            ImageService.detectLabels(imageKey, (labels) => {
-                var title = this.state.imageTitle
-                var description = this.state.imageDescription
-                ImageService.storeImageMeta(imageKey, title, description, labels);
+
+            ImageService.detectLabels(imageKey, (statusCode, labels) => {
+
+                if (statusCode == 200) {
+                    var title = this.state.imageTitle
+                    var description = this.state.imageDescription
+                    ImageService.storeImageMeta(imageKey, title, description, labels);
+                } else {
+                    ImageService.deleteImage(imageKey)
+                }
+
             })
+
         });
     }
 

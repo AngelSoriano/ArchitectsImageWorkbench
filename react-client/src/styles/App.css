@@ -57,6 +57,13 @@
     z-index: 2;
 }
 
+.UploadDropzone {
+    border-style: dashed;
+    height: 150px;
+    line-height: 10;
+    text-align: center;
+}
+
 .UploadComponent {
     float: right;
     padding: 6px;
@@ -126,7 +133,7 @@ input[type="text"] {
     width: 200px;
 }
 
-.tagsBar {
+#Tags {
     position: absolute;
     left: 50%;
     /*width: 100%;*/
@@ -139,8 +146,6 @@ input[type="text"] {
     height: 50px;
 }
 
-#RecommendedTags{
-}
 
 /*#SearchBar {*/
     /*!*width:55%;*!*/
@@ -148,6 +153,7 @@ input[type="text"] {
     /*float: left;*/
     /*!*vertical-align: top;*!*/
 /*}*/
+
 
 #inline {
     display: inline-block;
@@ -167,3 +173,4 @@ input[type="text"] {
     margin-top: 5px;
 
 }
+

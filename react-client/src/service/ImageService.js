@@ -19,9 +19,10 @@ function upload(file, callback) {
         .attach('imageFile', file)
         .set('Accept', 'application/json')
         .end((err, res) => {
-            if (err) console.log(err);
+            if (err) {
+                console.log(err);
+            }
             else {
-                alert('File uploaded!');
                 var imageKey = res.text
                 callback(imageKey)
             }
@@ -39,10 +40,13 @@ function detectLabels(imageKey, callback) {
     request.get('images/detect')
         .query({imageKey: imageKey})
         .end(function (err, res) {
-            if (err) console.log(err);
+            if (err) {
+                console.log(err);
+                callback(err.statusCode, null)
+            }
             else {
                 var labels = res.text
-                callback(labels)
+                callback(res.statusCode, labels)
             }
         })
 }
@@ -68,14 +72,14 @@ function storeImageMeta(imageKey, title, description, labels) {
                 deleteImage(imageKey);
             }
             else {
-                console.log(res)
+                alert("Your image has successfully uploaded! :)")
             }
         })
 }
 
 function deleteImage(imageKey) {
     request.get('images/s3/delete').query({imageKey: imageKey}).end((err, res) => {
-        if(err) {
+        if (err) {
             console.log(err + res.text);
         }
         else {
@@ -86,7 +90,7 @@ function deleteImage(imageKey) {
 
 function search(searchTerm, callback) {
     request.get('images/search').query({searchTerm: searchTerm}).end((err, res) => {
-        if(err) {
+        if (err) {
             console.log(err + res);
         }
         else {
