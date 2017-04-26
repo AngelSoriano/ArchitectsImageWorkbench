@@ -28,7 +28,7 @@ class ResultsComponent extends Component {
                 </div>
                 <br/>
                 <br/>
-                <ImageGallery searchResults={this.props.searchResults}/>
+                <ImageGallery searchResults={this.state.searchResults}/>
             </div>
         )
     }
@@ -38,14 +38,19 @@ class ResultsComponent extends Component {
         this.state = {
             jsonImageResults: '',
             sortType: 'relevance',
-            searchResults: ''
+            searchResults: this.props.searchResults
         }
 
         this.setSortType = this.setSortType.bind(this)
+        this.searchResults = this.searchResults.bind(this)
     }
 
     setSortType(sortType) {
         this.setState({sortType: sortType})
+    }
+
+    searchResults(searchResults) {
+        this.setState({searchResults: searchResults})
     }
 
 }

@@ -5,6 +5,7 @@
 import React, {Component} from 'react';
 import ImageGallery from './ImageGallery'
 import SearchBar from './SearchBar'
+import ImageService from '../service/ImageService'
 
 
 class Home extends Component {
@@ -19,7 +20,7 @@ class Home extends Component {
                         <SearchBar searchResults={this.searchResults}/>
                     </div>
                 </div>
-                <ImageGallery searchResults={this.state.imageIdsAndConfidenceLevels}/>
+                <ImageGallery searchResults={this.state.imageDisplay}/>
             </div>
 
         );
@@ -29,23 +30,34 @@ class Home extends Component {
         super(props);
 
         // TODO: Get most popular images based on clicks (hard-coded with image IDs for now)
-        var imageIdsAndConfidenceLevels = {
+        // Default image display
+        var imageDisplay = {
             "b7d0a852-6d46-4d90-9a6e-80a3d37cf501": 1,
             "87c9b2d8-0939-44aa-9bdc-6e2558d6417f": 1,
             "18e76dea-c688-4c12-b2a5-166f88b1661d": 1
         };
-        imageIdsAndConfidenceLevels = JSON.stringify(imageIdsAndConfidenceLevels);
+        imageDisplay = JSON.stringify(imageDisplay);
 
         this.state = {
-            imageIdsAndConfidenceLevels: imageIdsAndConfidenceLevels
+            imageDisplay: imageDisplay
         }
 
         this.searchResults = this.searchResults.bind(this)
+        this.getImageDisplay = this.getImageDisplay.bind(this)
+
+        this.getImageDisplay()
     }
 
     searchResults(searchResults) {
         this.props.route.searchResults(searchResults)
     }
+
+    getImageDisplay() {
+        ImageService.search("architecture", (imageDisplay) => {
+            this.setState({imageDisplay: imageDisplay})
+        })
+    }
+
 
 }
 
