@@ -53,7 +53,7 @@ class Home extends Component {
     }
 
     getImageDisplay() {
-        ImageService.search("architecture", (imageDisplay) => {
+        ImageService.search("indoors", (imageDisplay) => {
             this.setState({imageDisplay: imageDisplay})
         })
     }
