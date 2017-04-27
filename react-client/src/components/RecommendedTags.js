@@ -1,15 +1,14 @@
 import React, {Component} from 'react'
 import {Button, ButtonToolbar} from 'react-bootstrap';
 import TagService from '../service/TagService';
+import '../styles/App.css';
 
 class RecommendedTags extends Component {
     render() {
         return (
-            <div className="RecommendedTags">
-                <ButtonToolbar className="TagsBar">
+                <div className="TagsBar">
                     {this.renderTags()}
-                </ButtonToolbar>
-            </div>
+                </div>
         )
     }
 
@@ -48,7 +47,7 @@ class RecommendedTags extends Component {
 
     renderTags() {
         return this.state.tags.map(name => (
-            <Button className="TagsBarItem"
+            <Button
                     key={name}
                     name={name}
             >{name}</Button>

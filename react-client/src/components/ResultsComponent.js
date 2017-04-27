@@ -7,6 +7,7 @@ import SortDropdownButton from './SortDropdownButton'
 import ImageGallery from './ImageGallery'
 import SearchBar from './SearchBar'
 import RecommendedTags from './RecommendedTags'
+import '../styles/App.css';
 
 class ResultsComponent extends Component {
     render() {
@@ -22,9 +23,7 @@ class ResultsComponent extends Component {
                     <br/>
                     <br/>
                     <br/>
-                    <div id ="Tags">
-                        <RecommendedTags imageList={this.props.searchResults}/>
-                    </div>
+                    <RecommendedTags imageList={this.props.searchResults}/>
                 </div>
                 <br/>
                 <br/>
