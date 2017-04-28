@@ -7,7 +7,9 @@ import SortDropdownButton from './SortDropdownButton'
 import ImageGallery from './ImageGallery'
 import SearchBar from './SearchBar'
 import RecommendedTags from './RecommendedTags'
-import '../styles/App.css';
+
+import ImageService from '../service/ImageService'
+
 
 class ResultsComponent extends Component {
     render() {
@@ -23,11 +25,17 @@ class ResultsComponent extends Component {
                     <br/>
                     <br/>
                     <br/>
-                    <RecommendedTags imageList={this.props.searchResults}/>
+
+                    <div id ="Tags">
+                        <RecommendedTags imageList={this.state.searchResults} tagSearch={this.tagSearch}/>
+                    </div>
+
+
                 </div>
                 <br/>
                 <br/>
-                <ImageGallery searchResults={this.props.searchResults}/>
+                <ImageGallery searchResults={this.state.searchResults}/>
+
             </div>
         )
     }
@@ -37,14 +45,27 @@ class ResultsComponent extends Component {
         this.state = {
             jsonImageResults: '',
             sortType: 'relevance',
-            searchResults: ''
+            searchResults: this.props.searchResults
         }
 
         this.setSortType = this.setSortType.bind(this)
+        this.searchResults = this.searchResults.bind(this)
+        this.tagSearch = this.tagSearch.bind(this)
+
     }
 
     setSortType(sortType) {
         this.setState({sortType: sortType})
+    }
+
+    searchResults(searchResults) {
+        this.setState({searchResults: searchResults})
+    }
+
+    tagSearch(tagToSearch) {
+        ImageService.search(tagToSearch, (searchResults) => {
+            this.setState({searchResults: searchResults})
+        })
     }
 
 }

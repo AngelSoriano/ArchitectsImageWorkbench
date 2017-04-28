@@ -42,7 +42,6 @@ class RecommendedTags extends Component {
         TagService.retrieve(this.getImageIds(), (tags) => {
             this.setState({tags: JSON.parse(tags)})
         })
-
     }
 
     renderTags() {
@@ -50,6 +49,7 @@ class RecommendedTags extends Component {
             <Button
                     key={name}
                     name={name}
+                    onClick={() => this.props.tagSearch(name)}
             >{name}</Button>
         ))
     }
