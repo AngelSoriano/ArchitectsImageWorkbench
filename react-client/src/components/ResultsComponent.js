@@ -7,7 +7,9 @@ import SortDropdownButton from './SortDropdownButton'
 import ImageGallery from './ImageGallery'
 import SearchBar from './SearchBar'
 import RecommendedTags from './RecommendedTags'
+
 import ImageService from '../service/ImageService'
+
 
 class ResultsComponent extends Component {
     render() {
@@ -23,13 +25,17 @@ class ResultsComponent extends Component {
                     <br/>
                     <br/>
                     <br/>
+
                     <div id ="Tags">
                         <RecommendedTags imageList={this.state.searchResults} tagSearch={this.tagSearch}/>
                     </div>
+
+
                 </div>
                 <br/>
                 <br/>
                 <ImageGallery searchResults={this.state.searchResults}/>
+
             </div>
         )
     }
@@ -45,6 +51,7 @@ class ResultsComponent extends Component {
         this.setSortType = this.setSortType.bind(this)
         this.searchResults = this.searchResults.bind(this)
         this.tagSearch = this.tagSearch.bind(this)
+
     }
 
     setSortType(sortType) {

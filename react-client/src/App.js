@@ -20,7 +20,9 @@ class App extends Component {
                         <Route path="/panafold" component={Panafold}/>
                         <Route path="/results"
                                component={() => (<ResultsComponent searchResults={this.state.searchResults}/>)}
+                               refresh="true"
                         />
+
                     </Route>
                 </Router>
 

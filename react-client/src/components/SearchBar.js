@@ -24,6 +24,7 @@ class SearchBar extends Component {
         ImageService.search(this.state.value, (searchResults) => {
             this.props.searchResults(searchResults)
         })
+
     }
 
     render() {

@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {Button, ButtonToolbar} from 'react-bootstrap';
 import TagService from '../service/TagService';
 import ImageService from '../service/ImageService';
-
+import '../styles/App.css';
 
 class RecommendedTags extends Component {
     render() {
@@ -12,6 +12,7 @@ class RecommendedTags extends Component {
                     {this.state.tagColors != null ? this.renderTags() : null}
                 </ButtonToolbar>
             </div>
+
         )
     }
 
@@ -78,7 +79,7 @@ class RecommendedTags extends Component {
 
     renderTags() {
         return this.state.tags.map(name => (
-            <Button className="TagsBarItem"
+            <Button
                     key={name}
                     name={name}
                     onClick={() => this.props.tagSearch(name)}
