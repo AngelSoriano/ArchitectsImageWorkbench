@@ -1,13 +1,15 @@
 import React, {Component} from 'react'
 import {Button, ButtonToolbar} from 'react-bootstrap';
 import TagService from '../service/TagService';
+import ImageService from '../service/ImageService';
+
 
 class RecommendedTags extends Component {
     render() {
         return (
             <div className="RecommendedTags">
                 <ButtonToolbar className="TagsBar">
-                    {this.renderTags()}
+                    {this.state.tagColors != null ? this.renderTags() : null}
                 </ButtonToolbar>
             </div>
         )
@@ -19,12 +21,17 @@ class RecommendedTags extends Component {
         this.state = {
 
             tags: ['architecture', 'building', 'modern', 'office', 'chair', 'indoors'],
-            imageIds: ''
+            imageIds: '',
+            tagColors: null,
+            imageList: ''
         };
 
         this.getTagList = this.getTagList.bind(this);
         this.getImageIds = this.getImageIds.bind(this);
+        this.getImageColors = this.getImageColors.bind(this);
+
         this.getTagList()
+        this.getImageColors()
     }
 
     getImageIds() {
@@ -35,7 +42,6 @@ class RecommendedTags extends Component {
             imageIds.push(imageId)
         }
 
-        console.log(imageIds)
         return imageIds
     }
 
@@ -45,13 +51,40 @@ class RecommendedTags extends Component {
         })
     }
 
+    buttonStyle() {
+        return {
+            background: this.getRandomColor(),
+            color: "#FFFFFF"
+        }
+    }
+
+    getRandomColor() {
+        const tagColors = this.state.tagColors
+        return '#' + tagColors[Math.floor(Math.random() * tagColors.length)]
+    }
+
+    getImageColors() {
+        const imageIds = this.getImageIds();
+        // for(var i = 0; i < imageIds.length; i++) {
+            var imageUrl = 'https://s3-us-west-2.amazonaws.com/aiw-bucket/' + imageIds[0]
+            ImageService.detectColors(imageUrl, (colors) => {
+                this.setState({tagColors: JSON.parse(colors)}, () => {
+                    console.log("colors")
+                    console.log(this.state.tagColors)
+                })
+            })
+        // }
+    }
+
     renderTags() {
         return this.state.tags.map(name => (
             <Button className="TagsBarItem"
                     key={name}
                     name={name}
                     onClick={() => this.props.tagSearch(name)}
+                    style={this.buttonStyle()}
             >{name}</Button>
+
         ))
     }
 

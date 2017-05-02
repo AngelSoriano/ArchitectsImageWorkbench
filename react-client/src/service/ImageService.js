@@ -97,8 +97,18 @@ function search(searchTerm, callback) {
             callback(res.text)
         }
     })
-
 }
 
-const ImageService = {upload, detectLabels, storeImageMeta, deleteImage, search};
+function detectColors(imageUrl, callback) {
+    request.get('images/detect-color').query({imageUrl: imageUrl}).end((err, res) => {
+        if (err) {
+            console.log(err + res);
+        }
+        else {
+            callback(res.text)
+        }
+    })
+}
+
+const ImageService = {upload, detectLabels, storeImageMeta, deleteImage, search, detectColors};
 export default ImageService;

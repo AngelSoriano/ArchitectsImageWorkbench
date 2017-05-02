@@ -5,6 +5,7 @@ var multer = require('multer');
 var uuid = require('node-uuid');
 var admin = require('firebase-admin');
 var flashlightClient = require('../utility/flashlighClient')
+var gcloud = require('google-cloud');
 
 /**
  * AWS config
@@ -46,6 +47,18 @@ const upload = multer({
     // File size limitation in bytes
     limits: {fileSize: 52428800},
 });
+
+/**
+ * Google Cloud Vision config
+ */
+// Your Google Cloud Platform project ID
+const projectId = 'architects-image-workbench';
+// Instantiates a client
+const visionClient = gcloud.vision({
+    projectId: projectId,
+    keyFilename: 'service.json'
+});
+
 
 /**
  *  /images/s3/upload
@@ -190,6 +203,23 @@ router.get('/search', (req, res) => {
 
 
 });
+
+router.get('/detect-color', (req, res) => {
+    const imageUrl = req.query.imageUrl;
+
+    var types = ['label','properties'];
+
+    visionClient.detect(imageUrl, types, function(err, detection, apiResponse) {
+        // console.log(detection['labels']);
+        console.log(detection['properties']['colors']);
+
+        if (err) throw err
+        console.log(JSON.stringify(apiResponse, null, 2))
+
+        res.send(detection['properties']['colors'])
+    });
+
+})
 
 
 module.exports = router;
