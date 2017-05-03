@@ -8,9 +8,9 @@ class RecommendedTags extends Component {
     render() {
         return (
             <div className="RecommendedTags">
-                <ButtonToolbar className="TagsBar">
+                <div className="TagsBar">
                     {this.state.tagColors != null ? this.renderTags() : null}
-                </ButtonToolbar>
+                </div>
             </div>
 
         )
@@ -29,10 +29,10 @@ class RecommendedTags extends Component {
 
         this.getTagList = this.getTagList.bind(this);
         this.getImageIds = this.getImageIds.bind(this);
-        this.getImageColors = this.getImageColors.bind(this);
-
-        this.getTagList()
-        this.getImageColors()
+        // this.getImageColors = this.getImageColors.bind(this);
+        //
+        // this.getTagList()
+        // this.getImageColors()
     }
 
     getImageIds() {
