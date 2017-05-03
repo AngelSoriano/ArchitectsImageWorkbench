@@ -81,6 +81,9 @@
     padding-bottom: 2%;
 }
 
+.UploadButton {
+    margin-top: 7px;
+}
 
 input[type="text"] {
     /*display: block;*/
@@ -165,7 +168,9 @@ input[type="text"] {
     /*margin-right: 5px;*/
     /*width: 100%*/
 }
-
+.SortDropdownButton {
+    margin-top: 5.4px;
+}
 #Sorting {
     /*vertical-align: top;*/
     display: inline-block;

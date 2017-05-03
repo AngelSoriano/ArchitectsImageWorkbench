@@ -5,12 +5,13 @@
 import React, {Component} from 'react'
 import {Button} from 'react-bootstrap'
 import UploadModal from './UploadModal'
+import '../styles/App.css'
 
 class UploadComponent extends Component {
     render() {
         return (
             <div className="UploadComponent">
-                <Button bsStyle="warning" onClick={this.showUploadModal}>Upload</Button>
+                <Button className="UploadButton" bsStyle="warning" onClick={this.showUploadModal}>Upload</Button>
 
                 {this.state.showModal ? <UploadModal closeUploadModal={this.closeUploadModal}/> : null}
             </div>

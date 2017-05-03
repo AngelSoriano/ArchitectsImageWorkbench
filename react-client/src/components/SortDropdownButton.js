@@ -9,8 +9,8 @@ class SortDropdownButton extends Component {
 
     render() {
         return (
-            <div className="SortDropdownButton">
-                <DropdownButton title="Sort">
+            <div className="SortDropdown">
+                <DropdownButton className="SortDropdownButton" title="Sort">
                     {this.renderMenuItems()}
                 </DropdownButton>
             </div>
