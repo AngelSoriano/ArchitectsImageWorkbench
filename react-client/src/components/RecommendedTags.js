@@ -29,10 +29,10 @@ class RecommendedTags extends Component {
 
         this.getTagList = this.getTagList.bind(this);
         this.getImageIds = this.getImageIds.bind(this);
-        // this.getImageColors = this.getImageColors.bind(this);
-        //
-        // this.getTagList()
-        // this.getImageColors()
+        this.getImageColors = this.getImageColors.bind(this);
+
+        this.getTagList()
+        this.getImageColors()
     }
 
     getImageIds() {
@@ -79,7 +79,7 @@ class RecommendedTags extends Component {
 
     renderTags() {
         return this.state.tags.map(name => (
-            <Button
+            <Button className="RecommendedTag"
                     key={name}
                     name={name}
                     onClick={() => this.props.tagSearch(name)}

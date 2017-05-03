@@ -82,7 +82,7 @@
 }
 
 .UploadButton {
-    margin-top: 7px;
+    margin-top: 6px;
 }
 
 input[type="text"] {
@@ -144,9 +144,7 @@ input[type="text"] {
     overflow: auto;
     white-space: nowrap;
     transform: translate(-50%, -50%);
-    border-style: solid;
-    border-width: 1px;
-    border-color: lightgrey;
+    margin-top: 3px;
     height: 50px;
 }
 
@@ -181,7 +179,6 @@ input[type="text"] {
 }
 
 div.TagsBar {
-
     height: 50px;
     overflow: auto;
     white-space: nowrap;
@@ -191,7 +188,8 @@ div.TagsBar button {
     display: inline-block;
     /*background-color: #777;*/
     text-align: center;
-    padding: 14px;
+    padding: 12px;
     text-decoration: none;
+    margin-left: 3px;
 }
 
